@@ -32,6 +32,10 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   const concerts = [
     {
       date: 'Jan 10, 2026',
@@ -258,6 +262,10 @@ function App() {
 
   const ContactPage = () => (
       <div className="page contact-page">
+        <div className="contact-page-background">
+          <img src={logo} alt="Mars Project Logo" className="contact-page-bg-img" />
+        </div>
+
         <div className="page-container-small">
           <h2 className="page-title">Interested in Bookings?</h2>
           <p className="page-subtitle">Wanna know something else?</p>
