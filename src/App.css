@@ -1,0 +1,1279 @@
+/* ===================================
+   GLOBAL STYLES
+   =================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Anton&family=Righteous&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Oswald', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(127, 29, 29, 0.3), #000 60%);
+}
+
+/* ===================================
+   NAVBAR
+   =================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.6s ease;
+}
+
+.navbar:hover,
+.navbar.scrolled {
+  background: linear-gradient(135deg, rgba(20, 10, 5, 0.85), rgba(40, 20, 15, 0.85));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ef4444;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logo:hover {
+  color: #dc2626;
+}
+
+.logo-img {
+  height: 70px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background: #d1d5db;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.mobile-menu-btn:hover .hamburger-line {
+  background: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  background: linear-gradient(135deg, rgba(20, 10, 5, 0.98), rgba(40, 20, 15, 0.98));
+  border-left: 2px solid #ef4444;
+  padding: 2rem;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.mobile-menu-close:hover {
+  color: #ef4444;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.mobile-nav-button {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-family: 'Righteous', cursive;
+  font-size: 1.5rem;
+  text-align: left;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-left: 3px solid transparent;
+}
+
+.mobile-nav-button:hover {
+  color: #fff;
+  border-left-color: #ef4444;
+  padding-left: 1.5rem;
+}
+
+.mobile-nav-button.active {
+  color: #ef4444;
+  border-left-color: #ef4444;
+  padding-left: 1.5rem;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-family: 'Righteous', cursive;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-button:hover {
+  color: #f9fafb;
+  transform: translateY(-2px);
+}
+
+.nav-button.active {
+  color: #ef4444;
+}
+
+.nav-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #ef4444;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+}
+
+/* ===================================
+   PAGE LAYOUT
+   =================================== */
+.page {
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+}
+
+.page-container-small {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+}
+
+.page-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow:
+          2px 2px 0px #ef4444,
+          4px 4px 0px #dc2626,
+          6px 6px 15px rgba(0, 0, 0, 0.5);
+  animation: slideInDown 0.8s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+          2px 2px 0px #ef4444,
+          3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================================
+   CARDS
+   =================================== */
+.card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow:
+          0 0 30px rgba(239, 68, 68, 0.2),
+          inset 0 0 20px rgba(239, 68, 68, 0.05);
+  transform: translateY(-3px);
+}
+
+/* ===================================
+   BUTTONS
+   =================================== */
+.btn-primary {
+  background: #ef4444;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow:
+          0 0 20px rgba(239, 68, 68, 0.5),
+          0 4px 0 #dc2626,
+          0 8px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background: #dc2626;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+          0 0 30px rgba(239, 68, 68, 0.8),
+          0 6px 0 #991b1b,
+          0 12px 20px rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow:
+          0 0 20px rgba(239, 68, 68, 0.5),
+          0 2px 0 #dc2626,
+          0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================
+   HOME PAGE
+   =================================== */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 0;
+  min-height: 150vh;
+}
+
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    min-height: 100vh;
+  }
+
+  .home-background {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .home-content {
+    margin-top: 20vh;
+  }
+}
+
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(127,29,29,0.5));
+  z-index: 2;
+}
+
+.home-watermark {
+  position: absolute;
+  font-size: 15rem;
+  font-weight: 900;
+  color: rgba(239, 68, 68, 0.1);
+  z-index: 2;
+  user-select: none;
+}
+
+.home-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+  margin-top: 30vh;
+}
+
+.home-footer {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.home-footer p {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.page-footer {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.page-footer p {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.home-logo {
+  width: 500px;
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8));
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease-out;
+  cursor: pointer;
+  position: relative;
+}
+
+.home-logo:hover {
+  transform: scale(1.03);
+  filter:
+          drop-shadow(0 0 20px rgba(239, 68, 68, 0.7))
+          drop-shadow(0 10px 35px rgba(0, 0, 0, 0.8))
+          brightness(1.15);
+}
+
+.home-title {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  font-size: 7rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow:
+          3px 3px 0px #ef4444,
+          6px 6px 0px #dc2626,
+          9px 9px 0px #991b1b,
+          12px 12px 20px rgba(0, 0, 0, 0.8);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.home-subtitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   CONCERTS PAGE
+   =================================== */
+.concerts-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.shows-page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.shows-page-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) brightness(0.6);
+  animation: subtleZoom 25s ease-in-out infinite;
+}
+
+.shows-page-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.25),
+          rgba(127, 29, 29, 0.15),
+          rgba(0, 0, 0, 0.3)
+  );
+}
+
+.concerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.concert-card {
+  background: linear-gradient(135deg, rgba(127, 29, 29, 0.2), rgba(0,0,0,0.8));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.concert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.concert-card:hover::before {
+  left: 100%;
+}
+
+.concert-card:hover {
+  border-color: rgba(239, 68, 68, 0.6);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+          0 10px 30px rgba(239, 68, 68, 0.3),
+          0 0 60px rgba(239, 68, 68, 0.2);
+}
+
+.concert-info {
+  flex: 1;
+}
+
+.concert-date {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ef4444;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-small {
+  width: 1rem;
+  height: 1rem;
+}
+
+.date-text {
+  font-size: 1.125rem;
+}
+
+.separator {
+  color: #9ca3af;
+}
+
+.time-text {
+  color: #9ca3af;
+}
+
+.concert-venue {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.concert-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+}
+
+.btn-tickets {
+  background: #ef4444;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  box-shadow:
+          0 0 15px rgba(239, 68, 68, 0.4),
+          0 3px 0 #dc2626;
+  display: inline-block;
+}
+
+.btn-tickets:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow:
+          0 0 25px rgba(239, 68, 68, 0.6),
+          0 5px 0 #991b1b;
+}
+
+.btn-tickets:active {
+  transform: translateY(1px);
+  box-shadow:
+          0 0 15px rgba(239, 68, 68, 0.4),
+          0 1px 0 #dc2626;
+}
+
+/* ===================================
+   ABOUT PAGE
+   =================================== */
+.about-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.about-page-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) brightness(0.7);
+  animation: subtleZoom 25s ease-in-out infinite;
+}
+
+@keyframes subtleZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.about-page-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.2),
+          rgba(127, 29, 29, 0.15),
+          rgba(0, 0, 0, 0.3)
+  );
+}
+
+.member-hover-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  animation: fadeIn 0.4s ease;
+}
+
+.member-hover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(0%) brightness(0.9);
+}
+
+.member-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.3),
+          rgba(239, 68, 68, 0.15),
+          rgba(0, 0, 0, 0.4)
+  );
+}
+
+.about-text-marquee {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(30, 15, 15, 0.95));
+  border: 6px solid #000;
+  border-radius: 1.5rem;
+  padding: 3.5rem 3rem 3rem 3rem;
+  box-shadow:
+          0 15px 50px rgba(0, 0, 0, 0.9),
+          inset 0 0 60px rgba(239, 68, 68, 0.08),
+          0 0 0 2px #ef4444;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.marquee-bulbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.5rem;
+  pointer-events: none;
+}
+
+.marquee-bulbs::before,
+.marquee-bulbs::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow:
+          0 0 15px #ef4444,
+          0 0 30px rgba(239, 68, 68, 0.6);
+  animation: bulbGlow 2s ease-in-out infinite;
+}
+
+.marquee-bulbs::before {
+  top: 1rem;
+  left: 1rem;
+}
+
+.marquee-bulbs::after {
+  top: 1rem;
+  right: 1rem;
+  animation-delay: 1s;
+}
+
+@keyframes bulbGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow:
+            0 0 15px #ef4444,
+            0 0 30px rgba(239, 68, 68, 0.6);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+    box-shadow:
+            0 0 8px #ef4444,
+            0 0 15px rgba(239, 68, 68, 0.3);
+  }
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.about-story {
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 968px) {
+  .about-text-marquee {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+  }
+
+  .page-container {
+    max-width: 95%;
+    padding: 2rem 1rem;
+  }
+
+  .page-container-small {
+    max-width: 95%;
+    padding: 2rem 1rem;
+  }
+
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .linktree-tab {
+    bottom: 20px;
+    right: 20px;
+    padding: 0.75rem;
+    border-radius: 50%;
+    min-width: auto;
+  }
+
+  .linktree-text {
+    display: none;
+  }
+
+  .linktree-icon {
+    font-size: 1.75rem;
+    margin: 0;
+  }
+}
+
+.story-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.story-text:last-child {
+  margin-bottom: 0;
+}
+
+.band-members {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.member-card {
+  text-align: center;
+}
+
+.member-photo {
+  width: 100%;
+  height: 280px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  transition: transform 0.4s ease;
+  filter: grayscale(20%);
+}
+
+.member-card:hover .member-img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.member-icon {
+  width: 5rem;
+  height: 5rem;
+  background: rgba(127, 29, 29, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-music {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ef4444;
+}
+
+.member-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.member-role {
+  color: #ef4444;
+  font-size: 1.125rem;
+}
+
+/* ===================================
+   CONTACT PAGE
+   =================================== */
+.contact-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-page-background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: auto;
+  z-index: -1;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.contact-page-bg-img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(50%);
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+  transition: all 0.3s ease;
+}
+
+.contact-item-link:last-child .contact-item {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-item-link:hover .contact-item {
+  transform: translateX(10px);
+  padding-left: 10px;
+}
+
+.contact-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.contact-item-link:hover .contact-icon {
+  color: #dc2626;
+  transform: scale(1.2) rotate(5deg);
+}
+
+.contact-details {
+  flex: 1;
+}
+
+.contact-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.contact-link {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ef4444;
+  transition: width 0.3s ease;
+}
+
+.contact-item-link:hover .contact-link {
+  color: #ef4444;
+  transform: translateX(5px);
+}
+
+.contact-item-link:hover .contact-link::after {
+  width: 100%;
+}
+
+/* ===================================
+   FORM STYLES
+   =================================== */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #6b7280;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  width: 100%;
+  background: #ef4444;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.btn-submit:hover {
+  background: #dc2626;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (min-width: 768px) {
+  .concert-card {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .btn-tickets {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .home-title {
+    font-size: 3.5rem;
+  }
+
+  .home-watermark {
+    font-size: 8rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-button {
+    font-size: 0.75rem;
+  }
+
+  .linktree-tab {
+    bottom: 80px;
+    right: 15px;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .linktree-text {
+    font-size: 0.875rem;
+  }
+}
+
+/* ===================================
+   LINKTREE FIXED TAB
+   =================================== */
+.linktree-tab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow:
+          0 0 20px rgba(239, 68, 68, 0.6),
+          0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: floatIn 1s ease-out, pulse 2s ease-in-out 2s infinite;
+}
+
+.linktree-tab:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow:
+          0 0 30px rgba(239, 68, 68, 0.8),
+          0 8px 20px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.linktree-tab:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.linktree-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.linktree-text {
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow:
+            0 0 20px rgba(239, 68, 68, 0.6),
+            0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow:
+            0 0 30px rgba(239, 68, 68, 0.9),
+            0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+}
