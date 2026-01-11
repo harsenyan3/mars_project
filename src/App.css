@@ -995,23 +995,43 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 50%;
   height: auto;
   z-index: -1;
-  opacity: 0.08;
+  opacity: 0.12;
   pointer-events: none;
+  animation: subtleRotate 30s linear infinite;
+}
+
+@keyframes subtleRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .contact-page-bg-img {
   width: 100%;
   height: auto;
-  filter: grayscale(50%);
+  filter: grayscale(30%) brightness(1.2);
 }
 
 .contact-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
+}
+
+.contact-info {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(0, 0, 0, 0.7));
+  border: 2px solid rgba(239, 68, 68, 0.3);
+}
+
+.message-form {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(127, 29, 29, 0.2));
+  border: 2px solid rgba(239, 68, 68, 0.3);
 }
 
 .contact-items {
@@ -1112,8 +1132,8 @@ body {
 .form-input,
 .form-textarea {
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(239, 68, 68, 0.4);
   border-radius: 0.75rem;
   padding: 0.875rem 1rem;
   color: #fff;
@@ -1124,37 +1144,54 @@ body {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
   border-color: #ef4444;
+  background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
 .form-textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 150px;
 }
 
 .btn-submit {
   width: 100%;
-  background: #ef4444;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
   color: #fff;
-  font-weight: 600;
-  padding: 0.875rem 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.5rem;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+  box-shadow:
+          0 0 20px rgba(239, 68, 68, 0.5),
+          0 4px 0 #991b1b;
+  text-transform: uppercase;
 }
 
 .btn-submit:hover {
-  background: #dc2626;
-  box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  transform: translateY(-2px);
+  box-shadow:
+          0 0 30px rgba(239, 68, 68, 0.8),
+          0 6px 0 #7f1d1d;
+}
+
+.btn-submit:active {
+  transform: translateY(1px);
+  box-shadow:
+          0 0 20px rgba(239, 68, 68, 0.5),
+          0 2px 0 #991b1b;
 }
 
 /* ===================================
