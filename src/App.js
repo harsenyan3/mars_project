@@ -14,31 +14,31 @@ import './App.css';
 
 const concerts = [
   {
-    date: 'Jan 10, 2026',
-    venue: 'Barsouth Atlanta',
-    location: 'Atlanta, GA',
-    time: '10:00 PM',
-    tickets: 'https://tickets.example.com'
-  },
-  {
     date: 'Jan 23, 2026',
-    venue: 'Barsouth Atlanta',
-    location: 'Atlanta, GA',
-    time: '10:00 PM',
-    tickets: 'https://tickets.example.com'
-  },
-  {
-    date: 'Feb XX, 2026',
-    venue: 'XX',
+    venue: 'Barsouth Buckhead',
     location: 'Atlanta, GA',
     time: '11:00 PM',
     tickets: 'https://tickets.example.com'
   },
   {
-    date: 'Feb 22, 2025',
-    venue: 'Le Bataclan',
-    location: 'Paris, FR',
-    time: '8:30 PM',
+    date: 'Jan 30, 2026',
+    venue: 'GT Pike',
+    location: 'Atlanta, GA',
+    time: '11:00 PM',
+    tickets: 'https://tickets.example.com'
+  },
+  {
+    date: 'Feb 6, 2026',
+    venue: 'Barsouth Buckhead',
+    location: 'Atlanta, GA',
+    time: '10:00 PM',
+    tickets: 'https://tickets.example.com'
+  },
+  {
+    date: 'Feb 13, 2026',
+    venue: 'Lost Dog Tavern',
+    location: 'Atlanta, GA',
+    time: '10:00 PM',
     tickets: 'https://tickets.example.com'
   }
 ];
