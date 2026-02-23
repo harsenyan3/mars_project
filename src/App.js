@@ -436,12 +436,12 @@ function App() {
                         </div>
                       </div>
                     </a>
-                    <a href="tel:+12345678900" className="contact-item-link">
+                    <a href="tel:+17065815701" className="contact-item-link">
                       <div className="contact-item">
                         <Phone className="contact-icon" />
                         <div className="contact-details">
                           <p className="contact-label">Phone</p>
-                          <span className="contact-link">+1 (234) 567-8900</span>
+                          <span className="contact-link">+1 (706) 581-5701</span>
                         </div>
                       </div>
                     </a>
