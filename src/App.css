@@ -155,9 +155,9 @@ body {
   border: none;
   color: #d1d5db;
   font-family: 'Rockybilly', cursive;
-  font-size: 1.8rem;
+  font-size: 1.1rem;
   text-align: left;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   transition: all 0.3s;
   border-left: 3px solid transparent;
