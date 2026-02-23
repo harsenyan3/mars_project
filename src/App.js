@@ -20,6 +20,7 @@ const concerts = [
     location: 'Athens, GA',
     time: '8:00 PM',
     ticketed: false,
+    label: 'Private Event',
   },
   {
     date: 'Mar 13, 2026',
@@ -40,13 +41,6 @@ const concerts = [
     venue: 'Georgia Tech Porchfest',
     location: 'Atlanta, GA',
     time: '4:00 PM',
-    ticketed: false,
-  },
-  {
-    date: 'April 11, 2026',
-    venue: 'Barsouth Buckhead',
-    location: 'Atlanta, GA',
-    time: '11:00 PM',
     ticketed: false,
   }
 ];
@@ -298,7 +292,7 @@ function App() {
           <div className="home-content">
             <img src={logo} alt="Mars Project Logo" className="home-logo" />
             <p className="home-subtitle">
-              Just some kids making music out of Atlanta, Georgia. Ready to hear us live?
+              Just some kids making music out of Atlanta, Georgia. Got great things coming! Wanna hear us live?
             </p>
             <button onClick={() => scrollTo('shows')} className="btn-primary">
               SEE NEXT DATES
@@ -347,7 +341,7 @@ function App() {
                             GET TICKETS
                           </a>
                       ) : (
-                          <span className="btn-tickets-free">FREE ENTRY</span>
+                          <span className="btn-tickets-free">{concert.label || 'FREE ENTRY'}</span>
                       )}
                     </div>
                   </AnimatedSection>
@@ -385,7 +379,7 @@ function App() {
 
                 <div className="manifesto-body">
                   <p>Just a bunch of kids grooving, watching this movement get bigger every time we hit the stage. Pushing our message. Stretching our sound. Finding new colors in the music.</p>
-                  <p>Established in 2025 in Atlanta, GA. We've shared stages at Mercedes Benz Stadium, Barsouth Athens — alongside The Gringos, Flatline Drive, and more.</p>
+                  <p>Established in 2025. Resident band at Barsouth Buckhead, Atlanta, GA. We've shared stages at Mercedes Benz Stadium, Barsouth Athens — alongside The Gringos, Flatline Drive, and more.</p>
                   <p>Every performance is a journey. An expedition to the red planet and beyond.</p>
                 </div>
               </div>
