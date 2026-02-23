@@ -72,7 +72,7 @@ function useInView(options = {}) {
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return [ref, inView];
 }
@@ -154,7 +154,7 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const scrollTo = (section) => {
     sectionRefs[section].current?.scrollIntoView({ behavior: 'smooth' });
