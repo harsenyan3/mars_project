@@ -1,6 +1,7 @@
 /* ===================================
    GLOBAL STYLES
    =================================== */
+@import url('https://fonts.cdnfonts.com/css/rockybilly');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Anton&family=Righteous&display=swap');
 
 * {
@@ -14,10 +15,10 @@ body {
   background: #000;
   color: #fff;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .app {
-  min-height: 100vh;
   background: radial-gradient(circle at top, rgba(127, 29, 29, 0.3), #000 60%);
 }
 
@@ -46,26 +47,14 @@ body {
 .navbar-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem 0.6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ef4444;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.logo:hover {
-  color: #dc2626;
-}
-
 .logo-img {
-  height: 70px;
+  height: 62px;
   width: auto;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -77,7 +66,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .mobile-menu-btn {
@@ -106,7 +95,6 @@ body {
   .desktop-nav {
     display: none;
   }
-
   .mobile-menu-btn {
     display: flex;
   }
@@ -133,12 +121,8 @@ body {
 }
 
 @keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .mobile-menu-close {
@@ -170,13 +154,14 @@ body {
   background: none;
   border: none;
   color: #d1d5db;
-  font-family: 'Righteous', cursive;
-  font-size: 1.5rem;
+  font-family: 'Rockybilly', cursive;
+  font-size: 1.8rem;
   text-align: left;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s;
   border-left: 3px solid transparent;
+  text-transform: none;
 }
 
 .mobile-nav-button:hover {
@@ -195,15 +180,18 @@ body {
   background: none;
   border: none;
   color: #d1d5db;
-  font-family: 'Righteous', cursive;
-  font-size: 1rem;
+  font-family: 'Rockybilly', cursive;
+  font-size: 0.9rem;
   font-weight: 400;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.02em;
   cursor: pointer;
-  padding: 0.5rem 0;
+  padding: 0;
+  line-height: 1;
   position: relative;
   transition: all 0.3s;
+  -webkit-text-stroke: 0.5px #6b0f0f;
+  paint-order: stroke fill;
 }
 
 .nav-button:hover {
@@ -215,27 +203,15 @@ body {
   color: #ef4444;
 }
 
-.nav-button.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: #ef4444;
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-}
-
 /* ===================================
-   PAGE LAYOUT
+   SECTIONS (replaces .page)
    =================================== */
-.page {
+.section {
   min-height: 100vh;
-  padding-top: 5rem;
-  padding-bottom: 0;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .page-container {
@@ -243,6 +219,7 @@ body {
   margin: 0 auto;
   padding: 2rem 1.5rem;
   flex: 1;
+  width: 100%;
 }
 
 .page-container-small {
@@ -250,33 +227,21 @@ body {
   margin: 0 auto;
   padding: 2rem 1.5rem;
   flex: 1;
+  width: 100%;
 }
 
 .page-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
+  font-family: 'Rockybilly', cursive;
+  font-size: 2.2rem;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 3rem;
-  color: #fff;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-shadow:
-          2px 2px 0px #ef4444,
-          4px 4px 0px #dc2626,
-          6px 6px 15px rgba(0, 0, 0, 0.5);
-  animation: slideInDown 0.8s ease-out;
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000;
+  paint-order: stroke fill;
+  text-shadow: none;
+  letter-spacing: 0.03em;
+  text-transform: none;
 }
 
 .page-subtitle {
@@ -287,17 +252,56 @@ body {
 }
 
 .section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Rockybilly', cursive;
+  font-size: 2rem;
   font-weight: 400;
   text-align: center;
   margin-bottom: 2rem;
-  color: #fff;
-  letter-spacing: 0.08em;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000;
+  paint-order: stroke fill;
+  text-shadow: none;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.about-section .section-title {
+  font-family: 'Rockybilly', cursive;
+  font-size: 2rem;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000;
+  paint-order: stroke fill;
+  text-shadow: none;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+/* Card-level titles — Oswald, no brush font */
+.card-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
   text-transform: uppercase;
-  text-shadow:
-          2px 2px 0px #ef4444,
-          3px 3px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.section-footer {
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.section-footer p {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
 }
 
 /* ===================================
@@ -380,17 +384,12 @@ body {
 }
 
 /* ===================================
-   HOME PAGE
+   HOME SECTION
    =================================== */
-.home-page {
-  display: flex;
-  flex-direction: column;
+.home-section {
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  padding-top: 0;
-  min-height: 150vh;
+  min-height: 100vh;
 }
 
 .home-background {
@@ -399,24 +398,22 @@ body {
   left: 0;
   right: 0;
   height: 100%;
-  background-size: contain;
-  background-position: top center;
+  background-size: cover;
+  background-position: center 30%;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
 @media (max-width: 768px) {
-  .home-page {
+  .home-section {
     min-height: 100vh;
   }
-
   .home-background {
     background-size: cover;
-    background-position: center center;
+    background-position: center 30%;
   }
-
   .home-content {
-    margin-top: 20vh;
+    margin-top: 0;
   }
 }
 
@@ -427,58 +424,17 @@ body {
   z-index: 2;
 }
 
-.home-watermark {
-  position: absolute;
-  font-size: 15rem;
-  font-weight: 900;
-  color: rgba(239, 68, 68, 0.1);
-  z-index: 2;
-  user-select: none;
-}
-
 .home-content {
   position: relative;
   z-index: 10;
   text-align: center;
   padding: 2rem;
   max-width: 900px;
-  margin-top: 30vh;
-}
-
-.home-footer {
-  position: relative;
-  width: 100%;
-  z-index: 10;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
-  border-top: 1px solid rgba(239, 68, 68, 0.2);
-  color: #9ca3af;
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-.home-footer p {
-  margin: 0;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.05em;
-}
-
-.page-footer {
-  width: 100%;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(239, 68, 68, 0.2);
-  color: #9ca3af;
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-.page-footer p {
-  margin: 0;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.05em;
+  margin-top: -12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-logo {
@@ -490,7 +446,6 @@ body {
   transition: all 0.3s ease;
   animation: fadeInUp 1s ease-out;
   cursor: pointer;
-  position: relative;
 }
 
 .home-logo:hover {
@@ -499,31 +454,6 @@ body {
           drop-shadow(0 0 20px rgba(239, 68, 68, 0.7))
           drop-shadow(0 10px 35px rgba(0, 0, 0, 0.8))
           brightness(1.15);
-}
-
-.home-title {
-  font-family: 'Anton', 'Bebas Neue', sans-serif;
-  font-size: 7rem;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow:
-          3px 3px 0px #ef4444,
-          6px 6px 0px #dc2626,
-          9px 9px 0px #991b1b,
-          12px 12px 20px rgba(0, 0, 0, 0.8);
-  animation: titlePulse 3s ease-in-out infinite;
-}
-
-@keyframes titlePulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
 }
 
 .home-subtitle {
@@ -537,32 +467,44 @@ body {
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Scroll indicator arrow */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: pointer;
+  animation: bounceArrow 2s ease-in-out infinite;
+}
+
+.scroll-arrow {
+  width: 30px;
+  height: 30px;
+  border-right: 3px solid rgba(239, 68, 68, 0.8);
+  border-bottom: 3px solid rgba(239, 68, 68, 0.8);
+  transform: rotate(45deg);
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
 }
 
 /* ===================================
-   CONCERTS PAGE
+   SHOWS SECTION
    =================================== */
-.concerts-page {
+.shows-section {
   position: relative;
-  overflow: hidden;
 }
 
 .shows-page-background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 .shows-page-bg-img {
@@ -582,6 +524,17 @@ body {
           rgba(127, 29, 29, 0.15),
           rgba(0, 0, 0, 0.3)
   );
+}
+
+.shows-section .page-container {
+  position: relative;
+  z-index: 1;
+  padding-top: 6rem;
+}
+
+.shows-section .section-footer {
+  position: relative;
+  z-index: 1;
 }
 
 .concerts-list {
@@ -626,9 +579,7 @@ body {
           0 0 60px rgba(239, 68, 68, 0.2);
 }
 
-.concert-info {
-  flex: 1;
-}
+.concert-info { flex: 1; }
 
 .concert-date {
   display: flex;
@@ -639,27 +590,12 @@ body {
   font-weight: 600;
 }
 
-.icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
+.icon { width: 1.25rem; height: 1.25rem; }
+.icon-small { width: 1rem; height: 1rem; }
 
-.icon-small {
-  width: 1rem;
-  height: 1rem;
-}
-
-.date-text {
-  font-size: 1.125rem;
-}
-
-.separator {
-  color: #9ca3af;
-}
-
-.time-text {
-  color: #9ca3af;
-}
+.date-text { font-size: 1.125rem; }
+.separator { color: #9ca3af; }
+.time-text { color: #9ca3af; }
 
 .concert-venue {
   font-family: 'Bebas Neue', sans-serif;
@@ -705,28 +641,36 @@ body {
           0 5px 0 #991b1b;
 }
 
-.btn-tickets:active {
-  transform: translateY(1px);
-  box-shadow:
-          0 0 15px rgba(239, 68, 68, 0.4),
-          0 1px 0 #dc2626;
+.btn-tickets-free {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #9ca3af;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ===================================
-   ABOUT PAGE
+   ABOUT SECTION
    =================================== */
-.about-page {
+.about-section {
   position: relative;
-  overflow: hidden;
 }
 
 .about-page-background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
   transition: opacity 0.5s ease;
 }
 
@@ -739,12 +683,8 @@ body {
 }
 
 @keyframes subtleZoom {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 .about-page-overlay {
@@ -764,7 +704,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
   animation: fadeIn 0.4s ease;
 }
 
@@ -787,141 +727,137 @@ body {
   );
 }
 
-.about-text-marquee {
+.about-section .page-container {
   position: relative;
-  z-index: 10;
-  max-width: 900px;
+  z-index: 1;
+  padding-top: 6rem;
+}
+
+.about-section .section-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   ABOUT SECTION - MANIFESTO
+   =================================== */
+.about-text-marquee { display: none; }
+.marquee-bulbs { display: none; }
+.about-text { display: none; }
+.story-text { display: none; }
+.about-cards { display: none; }
+.about-card { display: none; }
+.about-card-icon { display: none; }
+.about-closing { display: none; }
+
+.manifesto-block {
+  max-width: 820px;
   margin: 0 auto 4rem;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(30, 15, 15, 0.95));
-  border: 6px solid #000;
-  border-radius: 1.5rem;
-  padding: 3.5rem 3rem 3rem 3rem;
-  box-shadow:
-          0 15px 50px rgba(0, 0, 0, 0.9),
-          inset 0 0 60px rgba(239, 68, 68, 0.08),
-          0 0 0 2px #ef4444;
-  animation: fadeIn 0.8s ease-out 0.2s both;
+  padding-top: 4rem;
 }
 
-.marquee-bulbs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 1.5rem;
-  pointer-events: none;
-}
-
-.marquee-bulbs::before,
-.marquee-bulbs::after {
-  content: '';
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ef4444;
-  box-shadow:
-          0 0 15px #ef4444,
-          0 0 30px rgba(239, 68, 68, 0.6);
-  animation: bulbGlow 2s ease-in-out infinite;
-}
-
-.marquee-bulbs::before {
-  top: 1rem;
-  left: 1rem;
-}
-
-.marquee-bulbs::after {
-  top: 1rem;
-  right: 1rem;
-  animation-delay: 1s;
-}
-
-@keyframes bulbGlow {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow:
-            0 0 15px #ef4444,
-            0 0 30px rgba(239, 68, 68, 0.6);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.85);
-    box-shadow:
-            0 0 8px #ef4444,
-            0 0 15px rgba(239, 68, 68, 0.3);
-  }
-}
-
-.about-text {
+.manifesto-declarations {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.about-story {
+  align-items: center;
+  gap: 1.1rem;
   margin-bottom: 3rem;
+  background: linear-gradient(to bottom, #e0e0e0 0%, #ef4444 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-@media (max-width: 968px) {
-  .about-text-marquee {
-    padding: 2.5rem 1.5rem 2rem 1.5rem;
-  }
+/* Crossed-out lines — Rockybilly font with outline + brush stroke */
+.manifesto-line {
+  font-family: 'Rockybilly', cursive;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.1;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(220, 220, 220, 0.8);
+  paint-order: stroke fill;
+}
 
-  .page-container {
-    max-width: 95%;
-    padding: 2rem 1rem;
-  }
+.manifesto-line.crossed {
+  text-decoration: none;
+}
 
-  .page-container-small {
-    max-width: 95%;
-    padding: 2rem 1rem;
-  }
+/* Brush marker strikethrough using SVG background */
+.manifesto-line.crossed::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  top: 44%;
+  height: 14px;
+  transform: translateY(-50%);
+  /* Hand-drawn brush stroke SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 14'%3E%3Cpath d='M2,7 C10,4 25,10 45,6 C65,2 80,9 100,7 C120,5 140,10 160,6 C175,3 188,8 198,7' stroke='rgba(220,220,220,0.75)' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4,9 C18,7 35,11 55,8 C75,5 95,10 115,8 C135,6 155,9 175,7 C185,6 194,8 198,9' stroke='rgba(220,220,220,0.3)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 
-  .contact-section {
-    grid-template-columns: 1fr;
-  }
+.manifesto-line.highlight {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  font-size: 5.5rem;
+  color: #fff;
+  -webkit-text-stroke: 0;
+  letter-spacing: 0.04em;
+  margin-top: 1.2rem;
+  text-shadow:
+          3px 3px 0px #ef4444,
+          6px 6px 0px #991b1b,
+          0 0 40px rgba(239, 68, 68, 0.4);
+  text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
-  .linktree-tab {
-    bottom: 20px;
-    right: 20px;
-    padding: 0.75rem;
-    border-radius: 50%;
-    min-width: auto;
+  .manifesto-line {
+    font-size: 1.4rem;
   }
-
-  .linktree-text {
-    display: none;
-  }
-
-  .linktree-icon {
-    font-size: 1.75rem;
-    margin: 0;
+  .manifesto-line.highlight {
+    font-size: 3.5rem;
   }
 }
 
-.story-text {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #d1d5db;
-  margin-bottom: 1.5rem;
+/* Body copy */
+.manifesto-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding-left: 0;
 }
 
-.story-text:last-child {
-  margin-bottom: 0;
+.manifesto-body p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(209, 213, 219, 0.85);
+  letter-spacing: 0.02em;
+  text-align: center;
 }
 
 .band-members {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .band-members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .band-members {
+    grid-template-columns: 1fr;
+  }
 }
 
 .member-card {
@@ -930,7 +866,7 @@ body {
 
 .member-photo {
   width: 100%;
-  height: 280px;
+  aspect-ratio: 1 / 1;
   border-radius: 0.75rem;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -941,7 +877,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center top;
   transition: transform 0.4s ease;
   filter: grayscale(20%);
 }
@@ -949,23 +885,6 @@ body {
 .member-card:hover .member-img {
   transform: scale(1.1);
   filter: grayscale(0%);
-}
-
-.member-icon {
-  width: 5rem;
-  height: 5rem;
-  background: rgba(127, 29, 29, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.icon-music {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: #ef4444;
 }
 
 .member-name {
@@ -983,33 +902,28 @@ body {
 }
 
 /* ===================================
-   CONTACT PAGE
+   CONTACT SECTION
    =================================== */
-.contact-page {
+.contact-section {
   position: relative;
-  overflow: hidden;
 }
 
 .contact-page-background {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   height: auto;
-  z-index: -1;
+  z-index: 0;
   opacity: 0.12;
   pointer-events: none;
   animation: subtleRotate 30s linear infinite;
 }
 
 @keyframes subtleRotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .contact-page-bg-img {
@@ -1018,20 +932,53 @@ body {
   filter: grayscale(30%) brightness(1.2);
 }
 
-.contact-section {
+.contact-section .page-container-small {
+  position: relative;
+  z-index: 1;
+  padding-top: 6rem;
+}
+
+.contact-section .section-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-section-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  align-items: stretch;
+}
+
+.contact-section-grid > div {
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-info {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(0, 0, 0, 0.7));
-  border: 2px solid rgba(239, 68, 68, 0.3);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.25), rgba(127, 29, 29, 0.4), rgba(0, 0, 0, 0.6));
+  border: 2px solid rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.15), inset 0 0 30px rgba(239, 68, 68, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .message-form {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(127, 29, 29, 0.2));
-  border: 2px solid rgba(239, 68, 68, 0.3);
+  background: linear-gradient(145deg, rgba(30, 10, 10, 0.85), rgba(80, 20, 20, 0.5), rgba(0, 0, 0, 0.7));
+  border: 2px solid rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.15), inset 0 0 30px rgba(239, 68, 68, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-form .form-fields {
+  flex: 1;
+}
+
+.contact-info .contact-items {
+  flex: 1;
 }
 
 .contact-items {
@@ -1080,9 +1027,7 @@ body {
   transform: scale(1.2) rotate(5deg);
 }
 
-.contact-details {
-  flex: 1;
-}
+.contact-details { flex: 1; }
 
 .contact-label {
   font-size: 0.875rem;
@@ -1143,9 +1088,7 @@ body {
 }
 
 .form-input::placeholder,
-.form-textarea::placeholder {
-  color: #9ca3af;
-}
+.form-textarea::placeholder { color: #9ca3af; }
 
 .form-input:focus,
 .form-textarea:focus {
@@ -1194,6 +1137,61 @@ body {
           0 2px 0 #991b1b;
 }
 
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================================
+   SUCCESS FLASH
+   =================================== */
+.success-flash {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-message {
+  text-align: center;
+  animation: scaleIn 0.4s ease;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: #ef4444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+}
+
+.success-message h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  font-size: 1.25rem;
+  color: #9ca3af;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */
@@ -1202,9 +1200,22 @@ body {
     flex-direction: row;
     align-items: center;
   }
-
   .btn-tickets {
     width: auto;
+  }
+}
+
+@media (max-width: 968px) {
+  .about-text-marquee {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+  }
+  .page-container,
+  .page-container-small {
+    max-width: 95%;
+    padding: 2rem 1rem;
+  }
+  .contact-section-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1212,105 +1223,116 @@ body {
   .page-title {
     font-size: 2.5rem;
   }
-
-  .home-title {
-    font-size: 3.5rem;
-  }
-
-  .home-watermark {
-    font-size: 8rem;
-  }
-
   .nav-links {
     gap: 1rem;
   }
-
   .nav-button {
     font-size: 0.75rem;
-  }
-
-  .linktree-tab {
-    bottom: 80px;
-    right: 15px;
-    padding: 0.75rem 1.25rem;
-  }
-
-  .linktree-text {
-    font-size: 0.875rem;
   }
 }
 
 /* ===================================
-   LINKTREE FIXED TAB
+   GLOBAL FOOTER
    =================================== */
-.linktree-tab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: #fff;
-  text-decoration: none;
-  padding: 1rem 1.5rem;
-  border-radius: 50px;
+.global-footer {
+  background: rgba(0, 0, 0, 0.92);
+  border-top: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-socials {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-family: 'Bebas Neue', sans-serif;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #d1d5db;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1.1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.footer-social-link:hover {
+  color: #fff;
+  border-color: rgba(239, 68, 68, 0.7);
+  background: rgba(239, 68, 68, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.footer-social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.footer-social-link:hover .footer-social-icon {
+  transform: scale(1.2);
+}
+
+.footer-link-emoji {
   font-size: 1.1rem;
+}
+
+.footer-linktree {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.footer-copy {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: all 0.4s ease;
-  box-shadow:
-          0 0 20px rgba(239, 68, 68, 0.6),
-          0 4px 15px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  animation: floatIn 1s ease-out, pulse 2s ease-in-out 2s infinite;
+  text-align: center;
 }
 
-.linktree-tab:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow:
-          0 0 30px rgba(239, 68, 68, 0.8),
-          0 8px 20px rgba(0, 0, 0, 0.6);
-  background: linear-gradient(135deg, #dc2626, #991b1b);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.linktree-tab:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
-.linktree-icon {
-  font-size: 1.5rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-.linktree-text {
-  font-weight: 400;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes floatIn {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
+@media (max-width: 600px) {
+  .footer-socials {
+    gap: 1rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .footer-social-link span:not(.footer-link-emoji) {
+    display: none;
+  }
+  .footer-social-link {
+    padding: 0.65rem;
+    border-radius: 50%;
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    box-shadow:
-            0 0 20px rgba(239, 68, 68, 0.6),
-            0 4px 15px rgba(0, 0, 0, 0.5);
-  }
-  50% {
-    box-shadow:
-            0 0 30px rgba(239, 68, 68, 0.9),
-            0 4px 15px rgba(0, 0, 0, 0.5);
-  }
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
