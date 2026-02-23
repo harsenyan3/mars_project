@@ -1195,6 +1195,7 @@ body {
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */
+
 @media (min-width: 768px) {
   .concert-card {
     flex-direction: row;
@@ -1205,10 +1206,8 @@ body {
   }
 }
 
+/* Tablet */
 @media (max-width: 968px) {
-  .about-text-marquee {
-    padding: 2.5rem 1.5rem 2rem 1.5rem;
-  }
   .page-container,
   .page-container-small {
     max-width: 95%;
@@ -1219,15 +1218,130 @@ body {
   }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+  /* Navbar */
   .page-title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
   .nav-links {
     gap: 1rem;
   }
   .nav-button {
     font-size: 0.75rem;
+  }
+
+  /* Home */
+  .home-content {
+    margin-top: 0;
+    padding: 1.5rem;
+  }
+  .home-logo {
+    width: 280px;
+  }
+  .home-subtitle {
+    font-size: 1.1rem;
+  }
+
+  /* Shows */
+  .concert-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  .concert-venue {
+    font-size: 1.5rem;
+  }
+  .concert-date {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+  }
+  .btn-tickets,
+  .btn-tickets-free {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  /* About manifesto */
+  .manifesto-block {
+    padding-top: 2rem;
+  }
+  .manifesto-line {
+    font-size: 1.4rem;
+  }
+  .manifesto-line.highlight {
+    font-size: 3rem;
+  }
+  .manifesto-body p {
+    font-size: 0.95rem;
+  }
+
+  /* Band members */
+  .band-members {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .member-name {
+    font-size: 1.1rem;
+  }
+  .member-role {
+    font-size: 0.9rem;
+  }
+
+  /* Contact */
+  .contact-section-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .contact-section .page-container-small {
+    padding-top: 4rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  /* Form */
+  .form-input,
+  .form-textarea {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+  .btn-submit {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .band-members {
+    grid-template-columns: 1fr;
+  }
+  .home-logo {
+    width: 220px;
+  }
+  .home-subtitle {
+    font-size: 0.95rem;
+  }
+  .manifesto-line {
+    font-size: 1.2rem;
+  }
+  .manifesto-line.highlight {
+    font-size: 2.4rem;
+  }
+  .page-title {
+    font-size: 1.5rem;
+  }
+  .concert-venue {
+    font-size: 1.3rem;
   }
 }
 
