@@ -291,7 +291,7 @@ function App() {
           <div className="home-content">
             <img src={logo} alt="Mars Project Logo" className="home-logo" />
             <p className="home-subtitle">
-              Just some kids making music out of Atlanta, Georgia. Got great things coming! Wanna hear us live?
+              Just some kids making music out of Atlanta, Georgia. Ready to hear us live?
             </p>
             <button onClick={() => scrollTo('shows')} className="btn-primary">
               SEE NEXT DATES
