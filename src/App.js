@@ -391,7 +391,7 @@ function App() {
 
             <div className="band-members">
               {bandMembers.map((member, idx) => (
-                  <AnimatedSection key={idx} delay={idx * 0.08} direction="up">
+                  <AnimatedSection key={idx} delay={idx * 0.08} direction="up" className="member-grid-item">
                     <div
                         className="member-card card"
                         onMouseEnter={() => setHoveredMember(member.image)}
