@@ -13,26 +13,33 @@ import jack from './jack.jpeg';
 import dom from './dom.png';
 import './App.css';
 
-const concerts = [
+const concertsRaw = [
   {
-    date: 'Mar 5, 2026',
-    venue: 'UGA Sigma Chi',
-    location: 'Athens, GA',
-    time: '8:00 PM',
+    date: 'Mar 7, 2026',
+    venue: 'Alabama ZBT',
+    location: 'Tuscaloosa, AL',
+    time: '2:00 PM',
     ticketed: false,
     label: 'Private Event',
   },
   {
     date: 'Mar 13, 2026',
-    venue: 'Lost Dog Tavern',
+    venue: 'Barsouth Buckhead',
     location: 'Atlanta, GA',
-    time: '9:00 PM',
+    time: '11:00 PM',
     ticketed: false,
   },
   {
     date: 'Mar 14, 2026',
     venue: 'Georgia Tech SAE',
     location: 'Atlanta, GA',
+    time: '9:00 PM',
+    ticketed: false,
+  },
+  {
+    date: 'April 4, 2026',
+    venue: 'Barsouth Athens',
+    location: 'Athens, GA',
     time: '10:00 PM',
     ticketed: false,
   },
@@ -42,8 +49,20 @@ const concerts = [
     location: 'Atlanta, GA',
     time: '4:00 PM',
     ticketed: false,
+  },
+  {
+    date: 'April 18, 2026',
+    venue: 'Techwoodstock',
+    location: 'Atlanta, GA',
+    time: '4:00 PM',
+    ticketed: false,
   }
 ];
+
+// Auto-sort by date, soonest first
+const concerts = [...concertsRaw].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+);
 
 const bandMembers = [
   { name: 'Hayk Arsenyan', role: 'Lead Singer', image: hayk },
@@ -84,11 +103,9 @@ function AnimatedSection({ children, className = '', delay = 0, direction = 'up'
 
   useEffect(() => {
     if (!inView) {
-      // When leaving, set exit direction based on scroll
       if (direction === 'left' || direction === 'right') {
-        setExitDir(direction); // horizontal stays same
+        setExitDir(direction);
       } else {
-        // vertical: exit up if scrolling down past it, down if scrolling back up
         setExitDir(scrollDirection === 'down' ? 'down' : 'up');
       }
     }
@@ -140,7 +157,6 @@ function App() {
     const handleScroll = () => {
       setNavbarScrolled(window.scrollY > 50);
 
-      // Determine active section
       const scrollPos = window.scrollY + 120;
       for (const [key, ref] of Object.entries(sectionRefs)) {
         if (ref.current) {
@@ -348,7 +364,6 @@ function App() {
               ))}
             </div>
           </div>
-
         </section>
 
         {/* ===================== ABOUT SECTION ===================== */}
@@ -368,25 +383,16 @@ function App() {
           <div className="page-container">
 
             <AnimatedSection delay={0.1} direction="fade">
-              <div className="manifesto-block">
-                <div className="manifesto-declarations">
-                  <div className="manifesto-line crossed">We are not indie.</div>
-                  <div className="manifesto-line crossed">We are not rock.</div>
-                  <div className="manifesto-line crossed">We are not country.</div>
-                  <div className="manifesto-line crossed">We are not pop.</div>
-                  <div className="manifesto-line highlight">We are MARS.</div>
-                </div>
-
-                <div className="manifesto-body">
-                  <p>Just a bunch of kids grooving, watching this movement get bigger every time we hit the stage. Pushing our message. Stretching our sound. Finding new colors in the music.</p>
-                  <p>Established in 2025. Resident band at Barsouth Buckhead, Atlanta, GA. We've shared stages at Mercedes Benz Stadium, Barsouth Athens — alongside The Gringos, Flatline Drive, and more.</p>
-                  <p>Every performance is a journey. An expedition to the red planet and beyond.</p>
-                </div>
+              <div className="about-body-block">
+                <h2 className="about-header">Who We Are</h2>
+                <p>Just a bunch of kids grooving, watching this movement get bigger every time we hit the stage. Pushing our message. Stretching our sound. Finding new colors in the music.</p>
+                <p>Established in 2025. Resident band at Barsouth Buckhead, Atlanta, GA. We've shared stages at Mercedes Benz Stadium, Barsouth Athens — alongside The Gringos, Flatline Drive, and more.</p>
+                <p>Every performance is a journey. An expedition to the red planet and beyond.</p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <h3 className="section-title">The Boys</h3>
+              <h3 className="section-title">Meet The Boys</h3>
             </AnimatedSection>
 
             <div className="band-members">
@@ -407,7 +413,6 @@ function App() {
               ))}
             </div>
           </div>
-
         </section>
 
         {/* ===================== CONTACT SECTION ===================== */}
@@ -504,7 +509,6 @@ function App() {
               </AnimatedSection>
             </div>
           </div>
-
         </section>
 
         {/* ===================== GLOBAL FOOTER ===================== */}
@@ -518,7 +522,6 @@ function App() {
                   className="footer-social-link"
                   aria-label="Instagram"
               >
-                {/* Instagram SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="footer-social-icon">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <circle cx="12" cy="12" r="4"/>
@@ -534,7 +537,6 @@ function App() {
                   className="footer-social-link"
                   aria-label="TikTok"
               >
-                {/* TikTok SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="footer-social-icon">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
                 </svg>
