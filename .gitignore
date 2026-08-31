@@ -25,3 +25,6 @@ yarn-error.log*
 # never commit tokens/secrets
 *.token
 token.txt
+
+# TypeScript incremental build cache
+*.tsbuildinfo
