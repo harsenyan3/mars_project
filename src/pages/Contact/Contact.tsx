@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
-import { Mail, Phone, Instagram } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { AnimatedSection } from '../../components/common/AnimatedSection';
+import { InstagramIcon } from '../../components/common/SocialIcons';
 import { ContactFormData } from '../../types';
 import logo from '../../assets/images/site/logo.png';
 import './Contact.css';
@@ -58,7 +59,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(function Contact(
                   className="contact-item-link"
                 >
                   <div className="contact-item">
-                    <Instagram className="contact-icon" />
+                    <InstagramIcon className="contact-icon" />
                     <div className="contact-details">
                       <p className="contact-label">Instagram</p>
                       <span className="contact-link">@marsprojectatl</span>

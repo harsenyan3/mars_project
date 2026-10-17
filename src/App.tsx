@@ -97,7 +97,7 @@ function App() {
       } else {
         throw new Error('Failed to send');
       }
-    } catch (error) {
+    } catch {
       alert('Failed to send message. Please try again or email us directly at marsprojectatl@gmail.com');
     } finally {
       setIsSubmitting(false);

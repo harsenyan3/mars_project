@@ -48,7 +48,6 @@ export function AnimatedSection({
         setExitDir(scrollDirection === 'down' ? 'down' : 'up');
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, direction]);
 
   return (
