@@ -24,42 +24,40 @@ export function About({ ref, bandMembers }: AboutProps) {
       className="about-section"
     >
       <div className="about-layout">
-        <AnimatedSection direction="fade">
+        <AnimatedSection direction="fade" className="about-story-cell">
           <GlassPanel className="about-story">
-            <SectionTitle align="left">
-              Who We Are
+            <SectionTitle align="left" className="about-story-heading">
+              Who Are We?
             </SectionTitle>
             <div className="about-story-body">
               <p>
-                Just a bunch of kids grooving, watching this movement get bigger every time we hit the stage.
-                Pushing our message. Stretching our sound. Finding new colors in the music.
+                Started in Atlanta as a college pastime, turned into a lifestyle. We are just some guys jamming
+                and watching this movement get bigger every time we hit the stage. Every f***ing time we are up
+                on that stage, man that energy is contagious!
               </p>
               <p>
-                Established in 2025. Resident band at Barsouth Buckhead, Atlanta, GA. We've played the
-                Mercedes-Benz Stadium lot, rocked stages in Athens and Auburn — alongside The Gringos,
-                Flatline Drive, and more.
+                Established in 2025.
+                <br />
+                Resident band at BarSouth Buckhead in Atlanta, GA.
+                <br />
+                We've played the Mercedes-Benz Stadium lot, rocked stages in Atlanta, Athens, Tuscaloosa,
+                Auburn... playing alongside The Stews, The Gringos, Twin Suns, Seven Two, Flatline Drive, and
+                more.
               </p>
               <p>Every performance is a journey. An expedition to the red planet and beyond.</p>
             </div>
           </GlassPanel>
         </AnimatedSection>
 
-        <div className="about-members">
-          <AnimatedSection>
-            <SectionTitle as="h3" align="left" className="about-members-heading">
-              The Boys
-            </SectionTitle>
-          </AnimatedSection>
-          <ul className="member-grid">
-            {bandMembers.map((member, idx) => (
-              <li key={member.name} className="member-grid-item">
-                <AnimatedSection delay={idx * 0.06}>
-                  <MemberTile member={member} />
-                </AnimatedSection>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="member-grid">
+          {bandMembers.map((member, idx) => (
+            <li key={member.name} className="member-grid-item">
+              <AnimatedSection delay={idx * 0.06} className="member-grid-anim">
+                <MemberTile member={member} />
+              </AnimatedSection>
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );
