@@ -8,6 +8,9 @@ interface SectionProps {
    *  'plain' sections get a slow ambient glow instead. Alternate them. */
   variant: 'image' | 'plain';
   backgroundImage?: string;
+  /** Optional photo used instead on phones (≤768px), e.g. a portrait crop.
+   *  Served via <picture>, so each device downloads only its own photo. */
+  mobileBackgroundImage?: string;
   /** CSS object-position for the background photo, e.g. "center 30%" */
   backgroundPosition?: string;
   /** Optional layer painted *beneath* the photo (image variant only), e.g. a logo
@@ -23,6 +26,7 @@ export function Section({
   id,
   variant,
   backgroundImage,
+  mobileBackgroundImage,
   backgroundPosition,
   backdrop,
   className = '',
@@ -33,7 +37,10 @@ export function Section({
       {variant === 'image' && backgroundImage && (
         <div className="section-bg" aria-hidden="true">
           {backdrop}
-          <img src={backgroundImage} alt="" className="section-bg-img" style={{ objectPosition: backgroundPosition }} />
+          <picture>
+            {mobileBackgroundImage && <source media="(max-width: 768px)" srcSet={mobileBackgroundImage} />}
+            <img src={backgroundImage} alt="" className="section-bg-img" style={{ objectPosition: backgroundPosition }} />
+          </picture>
         </div>
       )}
       {variant === 'plain' && <div className="section-ambient" aria-hidden="true" />}

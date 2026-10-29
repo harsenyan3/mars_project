@@ -4,6 +4,7 @@ import { Button } from '../../components/ui/Button';
 import { Section } from '../../components/ui/Section';
 import logo from '../../assets/images/site/logo-light.png';
 import homeHero from '../../assets/images/site/home-hero.jpg';
+import homeHeroPortrait from '../../assets/images/site/home-hero-portrait.jpg';
 import './Home.css';
 
 interface HomeProps {
@@ -18,6 +19,7 @@ export function Home({ ref, onSeeShows }: HomeProps) {
       id="home"
       variant="image"
       backgroundImage={homeHero}
+      mobileBackgroundImage={homeHeroPortrait}
       backgroundPosition="center 45%"
       backdrop={<img src={logo} alt="" className="home-backdrop-logo" />}
       className="home-section"

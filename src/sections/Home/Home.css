@@ -44,6 +44,17 @@
   .home-backdrop-logo {
     top: 40%;
   }
+  /* Portrait photo (home-hero-portrait.jpg): all 5 fit the width, and their faces
+     sit ~69% down the shot. Nudged up (no zoom, so nobody gets cropped) so the
+     faces land in the gap between the logo and "Next Shows" (~62% down) rather
+     than behind the logo; the crowd fills in behind the logo instead. The lower
+     edge fades out under the buttons. */
+  .home-section .section-bg-img {
+    top: -7%;
+    height: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  }
   .home-content {
     margin-bottom: 17vh;
   }

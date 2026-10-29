@@ -82,7 +82,8 @@ src/
   components/
     ui/                      design-system primitives (each .tsx + .css)
       Section                full-screen <section> shell: ref, id, variant 'image' | 'plain', backgroundImage,
-                              backdrop (optional layer painted beneath the photo; Home uses it for the logo)
+                              backdrop (optional layer painted beneath the photo; Home uses it for the logo),
+                              mobileBackgroundImage (phone-only photo via <picture>; each device downloads one)
       SectionTitle           Rockybilly heading (h2, or h3 via `as`), optional subtitle, align center|left
       GlassPanel             frosted translucent container (+ .glass-title label style)
       Button / ButtonLink    glass pill, variants primary | outline | glass (liquid-glass, used by Home's
@@ -103,7 +104,8 @@ src/
   sections/                  the four scroll sections (not routed pages)
     Home/                    Home: layered dark base -> big logo-light.png as Section backdrop -> band photo at
                               40% opacity (130% tall, shifted up 30%, so faces sit ~39% down) -> "Next Shows"
-                              glass CTA + socials near the bottom. The logo is decorative (alt=""), so a
+                              glass CTA + socials near the bottom. Phones use home-hero-portrait.jpg instead
+                              (all 5 fit the width), faces placed between the logo and the button (~62% down). The logo is decorative (alt=""), so a
                               visually hidden <h1> (.sr-only in global.css) carries the page title.
     Shows/                   Shows, ConcertRow (date · city/venue · tickets), ShowsEmptyState
     About/                   About (story panel + members), MemberCarousel (3×2 grid on desktop; centered carousel
