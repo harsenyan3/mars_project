@@ -54,27 +54,7 @@
   color: var(--text);
 }
 
-.member-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  /* Rows share the stretched height, so tiles grow taller when the story is long */
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.member-grid-item,
-.member-grid-anim {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.member-grid-anim,
-.member-grid-anim > .member-tile {
-  flex: 1;
-}
-
-/* Mobile: story on top, members in a horizontal swipe row underneath */
+/* Mobile: story on top, member carousel underneath (MemberCarousel.css) */
 @media (max-width: 768px) {
   .about-layout {
     grid-template-columns: 1fr;
@@ -87,21 +67,8 @@
     font-size: 0.9rem;
     line-height: 1.55;
   }
-  .member-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 0.65rem;
-    margin: 0 calc(-1 * var(--gutter));
-    padding: 0 var(--gutter) 0.25rem;
-    scroll-padding: 0 var(--gutter);
-    scrollbar-width: none;
-  }
-  .member-grid::-webkit-scrollbar {
-    display: none;
-  }
-  .member-grid-item {
-    flex: 0 0 40%;
-    scroll-snap-align: start;
+  /* Heading centered over the card on mobile (left-aligned on desktop) */
+  .about-story-heading {
+    text-align: center;
   }
 }
