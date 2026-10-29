@@ -18,7 +18,7 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 
 - **IA-1** It's a single page with four full-screen sections in this order: **Home → Shows → About → Contact**, followed by a slim footer.
 - **IA-2** There's no router and no separate pages. Adding a real second page (press kit, blog) is a new requirement that needs `react-router`.
-- **IA-3** Section backgrounds alternate photo / plain / photo / plain (Home and About use photos; Shows and Contact don't), so scrolling feels like one continuous flow.
+- **IA-3** Home, Shows and About have photo backgrounds; Contact is plain. Every photo fades to the base colour at its edges, so scrolling feels like one continuous flow. The Shows photo (`shows-bg.jpg`) is a band favourite and must stay.
 
 ## 3. Global layout & navigation
 
@@ -39,7 +39,7 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 ## 4. Sections
 
 ### Home
-- **HOME-1** Shows the band logo, a tagline, a "See next dates" button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree), over the hero photo.
+- **HOME-1** Shows the band logo (white-outline variant, `logo-light.png`, for contrast on the dark photo), a tagline, a "See next dates" button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree), over the hero photo.
 - **HOME-2** Shows a scroll hint arrow, hidden on very short screens.
 
 ### Shows
@@ -55,10 +55,10 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 - **SHOW-6** Shows are edited in `src/data/concerts.ts`, and changes go live on redeploy. There's no CMS.
 
 ### About
-- **ABOUT-1** A "Who We Are" story panel plus a "The Boys" member grid, over the band photo.
+- **ABOUT-1** A "Who Are We?" story card plus a member grid (no subheading), over the band photo. The heading deliberately straddles the card's top edge, half in and half out.
 - **ABOUT-2** Each member tile shows a photo, name and role. Hover gives a subtle zoom and full colour.
 - **ABOUT-3** Hovering a member must **not** change the page background.
-- **ABOUT-4** Layout: on desktop, story and members sit side by side, with members in a 3×2 grid. On mobile, the story comes first and members follow in a horizontal swipe row.
+- **ABOUT-4** Layout: on desktop, story and members sit side by side, with members in a 3×2 grid, and the story card's top and bottom edges line up exactly with the grid's. On mobile, the story comes first and members follow in a horizontal swipe row.
 
 ### Contact
 - **CON-1** Booking heading, contact methods (email, phone, Instagram) and a message form (name, email, phone, message).
@@ -114,5 +114,3 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 ## 8. Open items
 
 - Image weight: member photos are 1–4 MB each. The hero photo was replaced on 2026-10-28 with a 1448px live-show shot (~190 KB).
-- Home logo contrast: it has black outlines on a dark photo; the red-outline variant is a possible alternative.
-- `shows-bg.png` (15.7 MB) is unused and can be deleted.

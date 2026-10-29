@@ -107,9 +107,11 @@ src/
                               section's stacking context.
 
   assets/images/
-    site/                    logo.png (black outlines — used on Home), logo-inverted.png (red outlines — navbar,
+    site/                    logo.png (original master: black outlines, unused directly), logo-light.png (Home: black
+                              recolored to white for dark backgrounds, reds untouched), logo-inverted.png (red outlines — navbar,
                               and the source for the public/ icons), home-hero.jpg, band-members.jpg (About bg),
-                              shows-bg.png (UNUSED since the redesign, and 15.7 MB; safe to delete),
+                              shows-bg.jpg (Shows bg — the band's favorite; keep it. Re-encoded from a 15.7 MB PNG to
+                              1800px JPEG, ~0.9 MB),
                               unused-mars-member.jpg (never referenced; safe to delete)
     band/                    one photo per member, lowercase extensions (TS's ambient `*.jpeg` module
                               declaration is case-sensitive)
@@ -133,10 +135,11 @@ public/                      served verbatim at the site root: favicon.png, appl
 - A style lives in the CSS file next to the component that uses it. Shared building blocks are components in `components/ui/` (Section, SectionTitle, GlassPanel, Button), not global classes. `global.css` holds only the reset, document-level behavior and shared keyframes.
 - Plain CSS, BEM-ish flat class names (`.concert-row-city`, `.member-tile-caption`), no nesting.
 - **One screen per section:** `Section` is `min-height: 100svh` (svh so iPhone Safari's toolbar doesn't cause jumps), with `padding-top: var(--nav-h)` to clear the fixed nav, and content centred. Each section's content is sized to fit a 1440×800 or 1280×720 laptop and a 390×844 iPhone. `min-height` (not `height`) lets unusually short windows grow instead of clipping. Short-laptop tweaks use `@media (max-height: 760–780px) and (min-width: 769px)` (square member tiles, a shorter textarea). The Shows list scrolls internally if a tour outgrows the screen.
-- **Alternating backgrounds for flow:** Home (`image`) → Shows (`plain`) → About (`image`) → Contact (`plain`).
+- **Backgrounds for flow:** Home (`image`) → Shows (`image`) → About (`image`) → Contact (`plain`). Strict photo/plain alternation was the original redesign plan, but the band asked to keep the Shows photo, so three photo sections now run in a row, with soft fades between them.
+  - Shows' photo is a bright daytime shot. It's dimmed harder (`brightness(0.42)`), has its original slow 25s zoom back, and its tour list sits on a dark frosted-glass panel for legibility.
   - Image sections: the photo fades to `--bg` at the top and bottom edges.
   - Plain sections: two slow-drifting red radial glows, masked out at the edges and disabled under `prefers-reduced-motion`.
-  - Every section shares the single `--bg` color, so the seams are invisible. Keep the alternation if you add a section.
+  - Every section shares the single `--bg` color, so the seams are invisible. Don't remove or swap an existing section photo for the sake of a pattern without asking the band first.
 - **Scroll snap:** `html { scroll-snap-type: y proximity }`, plus `scroll-snap-align: start` on sections (and `end` on the footer). This is gentle on purpose, not `mandatory`.
 - **"Liquid glass" look:** translucent gradients, `backdrop-filter: blur(20px) saturate(180%)`, hairline white borders, an inset top highlight, large radii. Panels over busy photos use darker glass (About story panel, member captions) for legibility.
 - **Navbar:** never gets a background (no hover or scrolled state). The links have a text-shadow, and a faint top fade under the nav keeps them legible over photos.

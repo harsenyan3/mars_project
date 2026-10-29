@@ -2,7 +2,7 @@ import type { Ref } from 'react';
 import { SocialLinks } from '../../components/common/SocialLinks';
 import { Button } from '../../components/ui/Button';
 import { Section } from '../../components/ui/Section';
-import logo from '../../assets/images/site/logo.png';
+import logo from '../../assets/images/site/logo-light.png';
 import homeHero from '../../assets/images/site/home-hero.jpg';
 import './Home.css';
 
