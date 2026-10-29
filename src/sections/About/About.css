@@ -1,0 +1,82 @@
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* Overrides the shared .section-title inside About only — deliberate scoping
+   (higher specificity always wins, regardless of viewport). Adds a soft shadow
+   because these headings sit over a photo. */
+.about-section .section-title {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Darker glass than the default — this panel sits directly over a busy photo */
+.about-story.glass-panel {
+  background: linear-gradient(155deg, rgba(20, 20, 24, 0.62), rgba(8, 8, 10, 0.55));
+}
+
+.about-story-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.about-story-body p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.about-members-heading {
+  margin-bottom: 1rem;
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.member-grid-item {
+  min-width: 0;
+}
+
+/* Mobile: story on top, members in a horizontal swipe row underneath */
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .about-story-body {
+    gap: 0.6rem;
+  }
+  .about-story-body p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .about-story .section-heading {
+    margin-bottom: 0.75rem;
+  }
+  .about-members-heading {
+    margin-bottom: 0.6rem;
+  }
+  .member-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.65rem;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 0.25rem;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .member-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .member-grid-item {
+    flex: 0 0 40%;
+    scroll-snap-align: start;
+  }
+}

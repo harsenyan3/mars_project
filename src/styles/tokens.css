@@ -1,0 +1,61 @@
+/* ===================================
+   DESIGN TOKENS
+   Every color, font, glass effect and layout constant the site uses.
+   Components reference these instead of hard-coding values.
+   =================================== */
+:root {
+  /* Brand */
+  --red: #ef4444;
+  --red-dark: #dc2626;
+  --red-darker: #991b1b;
+
+  /* Surfaces — one base color so image and plain sections blend seamlessly */
+  --bg: #050506;
+  --hairline: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --text-strong: #ffffff;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+
+  /* Type */
+  --font-display: 'Rockybilly', 'Brush Script MT', cursive;
+  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-label: 'Bebas Neue', 'Space Grotesk', sans-serif;
+
+  /* Liquid glass */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-tint: rgba(12, 12, 15, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-blur: blur(20px) saturate(180%);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+  /* Shape & motion */
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --nav-h: 88px;
+  --gutter: 2rem;
+  --content-max: 1200px;
+  --section-pad-y: 2rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 64px;
+    --gutter: 1.25rem;
+    --section-pad-y: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 1rem;
+  }
+}

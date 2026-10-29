@@ -1,5 +1,8 @@
 import { Concert } from '../types';
+import { isUpcoming, parseConcertDate } from '../utils/concertDates';
 
+// Add new shows anywhere in this list — it's sorted by date and past shows are
+// hidden automatically, so old entries can stay as a record.
 const concertsRaw: Concert[] = [
   {
     date: 'Mar 12, 2026',
@@ -30,9 +33,16 @@ const concertsRaw: Concert[] = [
     time: '4:00 PM',
     ticketed: false,
   },
+  {
+    date: 'Nov 13, 2026',
+    venue: 'SouthFest @ BarSouth Buckhead',
+    location: 'Atlanta, GA',
+    time: 'TBA',
+    ticketed: false,
+  },
 ];
 
-// Auto-sort by date, soonest first
-export const concerts: Concert[] = [...concertsRaw].sort(
-  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-);
+// Soonest first, today onward (evaluated on page load)
+export const upcomingConcerts: Concert[] = concertsRaw
+  .filter((concert) => isUpcoming(concert.date))
+  .sort((a, b) => parseConcertDate(a.date).getTime() - parseConcertDate(b.date).getTime());

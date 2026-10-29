@@ -1,0 +1,67 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-field {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: var(--text-strong);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form-field::placeholder {
+  color: var(--text-faint);
+}
+
+.form-field:focus {
+  outline: none;
+  border-color: rgba(239, 68, 68, 0.7);
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18);
+}
+
+.form-field--textarea {
+  resize: vertical;
+  height: 7rem;
+  min-height: 4.5rem;
+}
+
+@media (max-height: 760px) and (min-width: 769px) {
+  .form-field--textarea {
+    height: 5rem;
+  }
+}
+
+.contact-form-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+  .form-field {
+    /* 16px+ stops iOS Safari from zooming into focused inputs */
+    font-size: 16px;
+    padding: 0.7rem 0.9rem;
+  }
+  .form-field--textarea {
+    height: 6rem;
+  }
+}

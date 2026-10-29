@@ -1,45 +1,49 @@
+/* Always transparent — no bar, on hover or on scroll. A faint top fade keeps
+   the links legible when they sit over a photo. */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
-  backdrop-filter: blur(0px);
-  border-bottom: 1px solid transparent;
-  transition: all 0.6s ease;
+  height: var(--nav-h);
 }
 
-.navbar:hover,
-.navbar.scrolled {
-  background: linear-gradient(135deg, rgba(20, 10, 5, 0.85), rgba(40, 20, 15, 0.85));
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(239, 68, 68, 0.25);
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -30% 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent);
+  pointer-events: none;
 }
 
 .navbar-content {
+  position: relative;
+  height: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0.75rem 2rem 0.6rem 2rem;
+  padding: 0 var(--gutter);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.logo-img {
-  height: 62px;
-  width: auto;
+.navbar-logo {
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.logo-img:hover {
-  transform: scale(1.05);
+.navbar-logo-img {
+  height: 56px;
+  width: auto;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.35s var(--ease);
 }
 
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
+.navbar-logo:hover .navbar-logo-img {
+  transform: scale(1.04);
 }
 
 .mobile-menu-btn {
@@ -53,62 +57,27 @@
 }
 
 .hamburger-line {
-  width: 25px;
-  height: 3px;
-  background: #d1d5db;
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-strong);
   border-radius: 2px;
-  transition: all 0.3s;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  transition: background 0.3s;
 }
 
 .mobile-menu-btn:hover .hamburger-line {
-  background: #ef4444;
+  background: var(--red);
 }
 
 @media (max-width: 768px) {
-  .desktop-nav {
+  .navbar-links {
     display: none;
   }
   .mobile-menu-btn {
     display: flex;
   }
-}
-
-.nav-button {
-  background: none;
-  border: none;
-  color: #d1d5db;
-  font-family: 'Rockybilly', cursive;
-  font-size: 0.9rem;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  position: relative;
-  transition: all 0.3s;
-  -webkit-text-stroke: 0.5px #6b0f0f;
-  paint-order: stroke fill;
-}
-
-.nav-button:hover {
-  color: #f9fafb;
-  transform: translateY(-2px);
-}
-
-.nav-button.active {
-  color: #ef4444;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    gap: 0.6rem;
-  }
-  .nav-button {
-    font-size: 0.62rem;
-    letter-spacing: 0;
-  }
-  .logo-img {
-    height: 42px;
+  .navbar-logo-img {
+    height: 40px;
   }
 }

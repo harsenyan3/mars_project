@@ -1,0 +1,24 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.contact-grid-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-grid-cell > .glass-panel {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

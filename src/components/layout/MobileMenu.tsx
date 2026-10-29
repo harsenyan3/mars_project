@@ -1,7 +1,7 @@
 import { SectionKey } from '../../types';
+import { SocialLinks } from '../common/SocialLinks';
+import { NavLinks } from './NavLinks';
 import './MobileMenu.css';
-
-const NAV_ITEMS: SectionKey[] = ['home', 'shows', 'about', 'contact'];
 
 interface MobileMenuProps {
   activeSection: SectionKey;
@@ -12,21 +12,17 @@ interface MobileMenuProps {
 export function MobileMenu({ activeSection, onNavigate, onClose }: MobileMenuProps) {
   return (
     <div className="mobile-menu-overlay" onClick={onClose}>
-      <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
-        <button className="mobile-menu-close" onClick={onClose}>
+      <div className="mobile-menu" onClick={(e) => e.stopPropagation()} role="dialog" aria-label="Menu">
+        <button className="mobile-menu-close" onClick={onClose} aria-label="Close menu">
           ✕
         </button>
-        <div className="mobile-nav-links">
-          {NAV_ITEMS.map((page) => (
-            <button
-              key={page}
-              onClick={() => onNavigate(page)}
-              className={`mobile-nav-button ${activeSection === page ? 'active' : ''}`}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+        <NavLinks
+          className="mobile-menu-links"
+          orientation="column"
+          activeSection={activeSection}
+          onNavigate={onNavigate}
+        />
+        <SocialLinks variant="icons" className="mobile-menu-socials" />
       </div>
     </div>
   );

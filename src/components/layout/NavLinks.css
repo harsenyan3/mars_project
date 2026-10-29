@@ -1,0 +1,58 @@
+.nav-links {
+  display: flex;
+  gap: 2.25rem;
+}
+
+.nav-links--column {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  color: var(--text-strong);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+  transition: color 0.25s ease;
+}
+
+/* Underline grows in on hover — no background, no jump */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-link:focus-visible {
+  outline: none;
+}
+
+.nav-link.is-active {
+  color: var(--red);
+}
+
+.nav-links--column .nav-link {
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+}

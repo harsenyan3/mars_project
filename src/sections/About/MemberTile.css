@@ -1,0 +1,87 @@
+.member-tile {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  background: var(--glass-bg);
+}
+
+.member-tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(25%);
+  transition:
+    transform 0.6s var(--ease),
+    filter 0.6s ease;
+}
+
+.member-tile:hover .member-tile-img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+/* Glass caption floating over the bottom of the photo */
+.member-tile-caption {
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  /* Darker than --glass-tint: bright photos would otherwise wash the caption out */
+  background: rgba(8, 8, 10, 0.72);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-highlight);
+}
+
+.member-tile-name {
+  font-family: var(--font-label);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  color: var(--text-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.member-tile-role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #f87171;
+}
+
+/* Short laptop screens: square tiles keep the 3×2 grid inside one screen */
+@media (max-height: 780px) and (min-width: 769px) {
+  .member-tile {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .member-tile {
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-md);
+  }
+  .member-tile-caption {
+    left: 0.35rem;
+    right: 0.35rem;
+    bottom: 0.35rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.6rem;
+  }
+  .member-tile-name {
+    font-size: 0.95rem;
+  }
+  .member-tile-role {
+    font-size: 0.68rem;
+  }
+}

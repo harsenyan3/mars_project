@@ -1,0 +1,44 @@
+.concert-list {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  border-top: 1px solid var(--hairline);
+  /* Long tour lists scroll inside the section so it stays one screen tall */
+  max-height: calc(100svh - var(--nav-h) - 13rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline) transparent;
+}
+
+.concert-list-item {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.shows-empty {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.shows-empty-title {
+  font-family: var(--font-label);
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  color: var(--text-strong);
+  margin-bottom: 0.4rem;
+}
+
+.shows-empty-text {
+  color: var(--text-muted);
+}
+
+.shows-empty-text a {
+  color: var(--red);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.shows-empty-text a:hover {
+  border-bottom-color: currentColor;
+}

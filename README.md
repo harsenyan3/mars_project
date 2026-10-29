@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# MARS Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Marketing site for **MARS Project**, a live band out of Atlanta, GA ([@marsprojectatl](https://instagram.com/marsprojectatl)).
 
-## Available Scripts
+The whole site is one scrolling page with four full-screen sections: Home, Shows, About and Contact. It's built with React 19 + TypeScript on Vite. There's no backend: the contact form sends straight to EmailJS from the browser.
 
-In the project directory, you can run:
+## Getting started
 
-### `npm start`
+You need **Node 26** (the version is pinned in `.nvmrc`):
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+nvm use          # or: nvm install
+npm install
+npm run dev      # http://localhost:5173
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Scripts
 
-### `npm test`
+| Command | What it does |
+|---|---|
+| `npm run dev` / `npm start` | Dev server with hot reload |
+| `npm run build` | Type-checks, then builds for production into `build/` |
+| `npm run preview` | Serves the production build locally, for a last check before deploying |
+| `npm test` | Runs the test suite once (Vitest) — `npm run test:watch` to keep it running |
+| `npm run lint` | ESLint |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Common edits
 
-### `npm run build`
+- **Add or change a show:** edit `src/data/concerts.ts`. The list sorts itself by date and hides past shows automatically, so you can leave old entries in place. For a ticketed show, set `ticketed: true` and `tickets: '<url>'`.
+- **Change the roster:** edit `src/data/bandMembers.ts` and put the photo in `src/assets/images/band/`. Use lowercase file extensions (`.jpeg`, not `.JPEG`).
+- **Social links / contact details:** edit `src/data/socials.ts` and `src/data/contact.ts`.
+- **Colors, fonts, glass effect:** all design tokens live in `src/styles/tokens.css`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploying
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Run `npm run build` and upload the contents of `build/` to any static host.

@@ -1,0 +1,103 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh; /* iPhone: the small viewport, so Safari's toolbar never causes a jump */
+  padding-top: var(--nav-h);
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: var(--bg);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--section-pad-y) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ----- image variant: photo melts into the base color at both edges ----- */
+.section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.section-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6) saturate(0.9);
+}
+
+.section-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, transparent 24%, transparent 68%, var(--bg) 100%),
+    radial-gradient(ellipse at center, transparent 35%, rgba(5, 5, 6, 0.6) 100%);
+}
+
+/* ----- plain variant: slow drifting ember glow, faded out at the edges ----- */
+.section-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+}
+
+.section-ambient::before,
+.section-ambient::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.section-ambient::before {
+  width: 60vmax;
+  height: 60vmax;
+  left: -15vmax;
+  top: 0;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.22), transparent 62%);
+  animation: ambientDriftA 28s ease-in-out infinite alternate;
+}
+
+.section-ambient::after {
+  width: 55vmax;
+  height: 55vmax;
+  right: -15vmax;
+  bottom: -10vmax;
+  background: radial-gradient(circle, rgba(153, 27, 27, 0.3), transparent 62%);
+  animation: ambientDriftB 34s ease-in-out infinite alternate;
+}
+
+@keyframes ambientDriftA {
+  to {
+    transform: translate(22vw, 14vh) scale(1.15);
+  }
+}
+
+@keyframes ambientDriftB {
+  to {
+    transform: translate(-20vw, -12vh) scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-ambient::before,
+  .section-ambient::after {
+    animation: none;
+  }
+}

@@ -8,7 +8,7 @@ export function SuccessFlash({ show }: SuccessFlashProps) {
   if (!show) return null;
 
   return (
-    <div className="success-flash">
+    <div className="success-flash" role="status">
       <div className="success-message">
         <div className="success-icon">✓</div>
         <h3>Message Sent!</h3>
