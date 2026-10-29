@@ -1,8 +1,38 @@
+/* A bright daytime photo, so it's dimmed harder than the other sections to keep
+   the tour rows legible, plus the slow zoom it always had. */
+.shows-section .section-bg-img {
+  filter: grayscale(20%) brightness(0.42);
+  animation: showsBgZoom 25s ease-in-out infinite;
+}
+
+@keyframes showsBgZoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shows-section .section-bg-img {
+    animation: none;
+  }
+}
+
+/* Dark frosted glass behind the rows so they stay legible over the photo */
 .concert-list {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  border-top: 1px solid var(--hairline);
+  padding: 0 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(155deg, rgba(20, 20, 24, 0.66), rgba(8, 8, 10, 0.6));
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
   /* Long tour lists scroll inside the section so it stays one screen tall */
   max-height: calc(100svh - var(--nav-h) - 13rem);
   overflow-y: auto;
@@ -10,8 +40,8 @@
   scrollbar-color: var(--hairline) transparent;
 }
 
-.concert-list-item {
-  border-bottom: 1px solid var(--hairline);
+.concert-list-item + .concert-list-item {
+  border-top: 1px solid var(--hairline);
 }
 
 .shows-empty {
