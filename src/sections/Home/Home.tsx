@@ -18,7 +18,7 @@ export function Home({ ref, onSeeShows }: HomeProps) {
       id="home"
       variant="image"
       backgroundImage={homeHero}
-      backgroundPosition="center 25%"
+      backgroundPosition="center 45%"
       className="home-section"
     >
       <div className="home-content">

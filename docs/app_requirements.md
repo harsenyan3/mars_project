@@ -113,6 +113,6 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 
 ## 8. Open items
 
-- Image weight: member photos are 1–4 MB each, and the hero photo is low-resolution (699px wide).
+- Image weight: member photos are 1–4 MB each. The hero photo was replaced on 2026-10-28 with a 1448px live-show shot (~190 KB).
 - Home logo contrast: it has black outlines on a dark photo; the red-outline variant is a possible alternative.
 - `shows-bg.png` (15.7 MB) is unused and can be deleted.

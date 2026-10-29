@@ -151,6 +151,6 @@ public/                      served verbatim at the site root: favicon.png, appl
 ## Known follow-ups / things to be aware of
 
 - **Security (handled 2026-08-27, verify it stayed fixed):** `src/token.txt` used to contain what looked like a live GitHub personal access token, committed to git history. It's been deleted and `.gitignore`d. The token itself still needs revoking on GitHub (Settings → Developer settings → tokens) if that hasn't happened; deleting the file doesn't remove it from past commits.
-- **Image weight:** the member photos are 0.6–4 MB each (`mombay.jpeg` 3.9 MB, `jack.jpeg` 3.4 MB…), `band-members.jpg` is 1.8 MB, and `home-hero.jpg` is only 699×571 (soft on large screens). Resizing them to ~800px wide WebP/JPEG would cut page weight by roughly 15 MB. A higher-resolution hero photo would help too.
+- **Image weight:** the member photos are 0.6–4 MB each (`mombay.jpeg` 3.9 MB, `jack.jpeg` 3.4 MB…), and `band-members.jpg` is 1.8 MB. Resizing them to ~800px wide WebP/JPEG would cut page weight by roughly 15 MB. `home-hero.jpg` (live show crowd photo, 1448×1086, ~190 KB, focal point `center 45%`) is already optimized; resize new photos the same way before committing.
 - Tests: an App smoke test (renders, checks the home subtitle) plus unit tests for `formatPhone` and `concertDates`. There's no coverage of the contact form flow, scroll spy or section rendering yet.
 - No router: adding a second real page (press kit, blog) means pulling in `react-router` rather than extending the section pattern.
