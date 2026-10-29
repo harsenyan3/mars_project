@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import './Button.css';
 
 interface ButtonStyleProps {
-  variant?: 'primary' | 'outline';
+  variant?: 'primary' | 'outline' | 'glass';
   size?: 'md' | 'sm';
 }
 

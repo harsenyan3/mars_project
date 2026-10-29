@@ -5,7 +5,7 @@ import { Section } from '../../components/ui/Section';
 import { SectionTitle } from '../../components/ui/SectionTitle';
 import { BandMember } from '../../types';
 import aboutBg from '../../assets/images/site/band-members.jpg';
-import { MemberTile } from './MemberTile';
+import { MemberCarousel } from './MemberCarousel';
 import './About.css';
 
 interface AboutProps {
@@ -49,15 +49,7 @@ export function About({ ref, bandMembers }: AboutProps) {
           </GlassPanel>
         </AnimatedSection>
 
-        <ul className="member-grid">
-          {bandMembers.map((member, idx) => (
-            <li key={member.name} className="member-grid-item">
-              <AnimatedSection delay={idx * 0.06} className="member-grid-anim">
-                <MemberTile member={member} />
-              </AnimatedSection>
-            </li>
-          ))}
-        </ul>
+        <MemberCarousel members={bandMembers} />
       </div>
     </Section>
   );

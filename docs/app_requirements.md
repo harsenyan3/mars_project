@@ -39,8 +39,8 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 ## 4. Sections
 
 ### Home
-- **HOME-1** Shows the band logo (white-outline variant, `logo-light.png`, for contrast on the dark photo), a tagline, a "See next dates" button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree), over the hero photo.
-- **HOME-2** Shows a scroll hint arrow, hidden on very short screens.
+- **HOME-1** Shows the band logo (white-outline variant, `logo-light.png`, for contrast on the dark photo; larger on desktop where it fits), a liquid-glass **"Next Shows"** button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree), over the hero photo. There's no tagline.
+- **HOME-2** The band's faces sit around 40% down the screen on both desktop and mobile. A scroll hint arrow shows only on screens taller than 760px.
 
 ### Shows
 - **SHOW-1** A conventional band tour-date list, styled after typical touring-band sites (see `Sources.md`). Each row shows:
@@ -58,7 +58,7 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 - **ABOUT-1** A "Who Are We?" story card plus a member grid (no subheading), over the band photo. The heading deliberately straddles the card's top edge, half in and half out.
 - **ABOUT-2** Each member tile shows a photo, name and role. Hover gives a subtle zoom and full colour.
 - **ABOUT-3** Hovering a member must **not** change the page background.
-- **ABOUT-4** Layout: on desktop, story and members sit side by side, with members in a 3×2 grid, and the story card's top and bottom edges line up exactly with the grid's. On mobile, the story comes first and members follow in a horizontal swipe row.
+- **ABOUT-4** Layout: on desktop, story and members sit side by side, with members in a 3×2 grid, and the story card's top and bottom edges line up exactly with the grid's. On mobile, the story comes first (heading centered) and members follow in a centered carousel: the selected member is full size with a red glow and its caption, neighbors are shrunk, dimmed and peek in from both sides. Left and right arrows step one member at a time and loop (next on the last member returns to the first, previous on the first goes to the last); swiping and tapping a neighbor also select.
 
 ### Contact
 - **CON-1** Booking heading, contact methods (email, phone, Instagram) and a message form (name, email, phone, message).
@@ -113,4 +113,4 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 
 ## 8. Open items
 
-- Image weight: member photos are 1–4 MB each. The hero photo was replaced on 2026-10-28 with a 1448px live-show shot (~190 KB).
+- Image weight: member photos are 1–4 MB each. The hero photo is a 1448px live-show shot in front of a packed crowd (~250 KB).
