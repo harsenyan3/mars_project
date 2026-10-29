@@ -31,7 +31,13 @@
   z-index: -1;
 }
 
+/* Lets the <img> size and position against .section-bg as if <picture> weren't there */
+.section-bg picture {
+  display: contents;
+}
+
 .section-bg-img {
+  position: relative; /* paints above an absolutely positioned backdrop */
   width: 100%;
   height: 100%;
   object-fit: cover;

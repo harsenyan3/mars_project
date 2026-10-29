@@ -39,8 +39,8 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 ## 4. Sections
 
 ### Home
-- **HOME-1** Shows the band logo (white-outline variant, `logo-light.png`, for contrast on the dark photo; larger on desktop where it fits), a liquid-glass **"Next Shows"** button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree), over the hero photo. There's no tagline.
-- **HOME-2** The band's faces sit around 40% down the screen on both desktop and mobile. A scroll hint arrow shows only on screens taller than 760px.
+- **HOME-1** The band logo (white-outline `logo-light.png`) is the large background, about 58% of the screen height on desktop and full width on phones. The band photo sits *in front of it* at low opacity (40%), so the logo shows through like a double exposure. Below them: a liquid-glass **"Next Shows"** button (scrolls to Shows) and social icons (Instagram, TikTok, Linktree). There's no tagline. The page keeps a screen-reader-only "MARS Project" heading.
+- **HOME-2** All five members must be visible on phones too. Phones get a separate portrait photo (`home-hero-portrait.jpg`) with the faces between the logo and the button (~62% down). Desktop uses the landscape photo with the faces ~40% down, behind the logo. A scroll hint arrow shows only on screens taller than 760px.
 
 ### Shows
 - **SHOW-1** A conventional band tour-date list, styled after typical touring-band sites (see `Sources.md`). Each row shows:
