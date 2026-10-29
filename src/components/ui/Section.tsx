@@ -10,6 +10,9 @@ interface SectionProps {
   backgroundImage?: string;
   /** CSS object-position for the background photo, e.g. "center 30%" */
   backgroundPosition?: string;
+  /** Optional layer painted *beneath* the photo (image variant only), e.g. a logo
+   *  showing through a semi-transparent photo. Covered by the edge fades too. */
+  backdrop?: ReactNode;
   className?: string;
   children: ReactNode;
 }
@@ -21,6 +24,7 @@ export function Section({
   variant,
   backgroundImage,
   backgroundPosition,
+  backdrop,
   className = '',
   children,
 }: SectionProps) {
@@ -28,6 +32,7 @@ export function Section({
     <section ref={ref} id={id} className={`section section--${variant} ${className}`}>
       {variant === 'image' && backgroundImage && (
         <div className="section-bg" aria-hidden="true">
+          {backdrop}
           <img src={backgroundImage} alt="" className="section-bg-img" style={{ objectPosition: backgroundPosition }} />
         </div>
       )}

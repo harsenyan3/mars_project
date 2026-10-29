@@ -19,10 +19,12 @@ export function Home({ ref, onSeeShows }: HomeProps) {
       variant="image"
       backgroundImage={homeHero}
       backgroundPosition="center 45%"
+      backdrop={<img src={logo} alt="" className="home-backdrop-logo" />}
       className="home-section"
     >
+      {/* The logo is decorative background now, so the page title lives here */}
+      <h1 className="sr-only">MARS Project</h1>
       <div className="home-content">
-        <img src={logo} alt="Mars Project" className="home-logo" />
         <Button variant="glass" onClick={onSeeShows} className="home-cta">
           Next Shows
         </Button>

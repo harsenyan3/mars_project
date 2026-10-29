@@ -1,41 +1,51 @@
+/* Buttons sit low, below the backdrop logo */
+.home-section .section-inner {
+  justify-content: flex-end;
+}
+
 .home-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   max-width: 760px;
-  margin: 0 auto;
+  margin: 0 auto 4.25vh;
 }
 
-/* Photo is taller than the section and shifted up 30%, which lifts the band's
-   faces ~15% of the screen higher at every aspect ratio (object-position alone
-   can't do it on phones, where the photo has no vertical slack). The bottom
-   still lines up with the section, so there's no gap above the fade. */
+/* Layering: dark base -> big logo (backdrop) -> band photo at low opacity -> buttons.
+   The photo is taller than the section and shifted up 30% so the band's faces
+   sit ~39% down the screen at every aspect ratio. */
 .home-section .section-bg-img {
-  position: relative;
   top: -30%;
   height: 130%;
+  opacity: 0.4;
+  filter: saturate(0.95);
 }
 
-.home-logo {
-  width: min(460px, 80vw);
+/* Lighter edge fades than other sections, so they don't dim the logo */
+.home-section .section-bg::after {
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, transparent 12%, transparent 78%, var(--bg) 100%),
+    radial-gradient(ellipse at center, transparent 45%, rgba(5, 5, 6, 0.5) 100%);
+}
+
+/* As big as fits above the buttons: ~58% of the screen height, never wider than 92vw */
+.home-backdrop-logo {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: min(92vw, 85svh);
   height: auto;
-  /* Space where the tagline used to be, so the button sits just below its old spot */
-  margin-bottom: 10vh;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8));
-  animation: fadeInUp 1s var(--ease) both;
-}
-
-/* Bigger logo on desktop, capped by screen height so it always fits one screen */
-@media (min-width: 769px) {
-  .home-logo {
-    width: min(620px, 72svh);
-  }
+  transform: translate(-50%, -50%);
+  animation: fadeIn 1.2s ease both;
 }
 
 @media (max-width: 768px) {
-  .home-logo {
-    margin-bottom: 16vh;
+  .home-backdrop-logo {
+    top: 40%;
+  }
+  .home-content {
+    margin-bottom: 17vh;
   }
 }
 
