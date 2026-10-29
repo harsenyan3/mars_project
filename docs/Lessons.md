@@ -22,6 +22,10 @@ Each entry follows this format:
 **What happened:** `Section` uses `isolation: isolate` and `overflow: hidden`, which creates a stacking context. A `position: fixed` overlay rendered inside it, like `SuccessFlash`, would sit under the navbar no matter its `z-index`.
 **Rule:** Render full-screen overlays as siblings of `<Section>` (see `Contact.tsx`), not as its children.
 
+### 2026-10-28 — Check the branch right before every commit and push
+**What happened:** Mid-session, the PR branch was merged and the working copy was switched to `main` and pulled (from the IDE). The uncommitted changes carried over silently. They were committed and `git push`ed straight to `origin/main` when they were meant for a PR. Fixing it meant moving the commits to a new branch and rolling `main` back with a force-push.
+**Rule:** Run `git branch --show-current` (and `git status -sb`) in the same command as `git commit`/`git push`, every time, and don't trust the branch from earlier in the session. Never commit to `main` directly; this repo goes through PRs. If it does happen, push the commits to a branch *first*, then reset `main` with `git push --force-with-lease=main:<sha-you-pushed>`, so it aborts if anyone else pushed in between.
+
 ### 2026-10-28 — Don't remove existing visuals to satisfy a pattern
 **What happened:** To get the strict photo/plain alternation the redesign asked for, the Shows background photo was dropped. The band liked that photo and asked for it back.
 **Rule:** When a new design rule conflicts with something already on the site (a photo, a section, an effect), keep the existing thing and ask, rather than quietly removing it. Mention the trade-off in the summary.
