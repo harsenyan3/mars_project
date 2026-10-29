@@ -6,7 +6,7 @@ The whole site is one scrolling page with four full-screen sections: Home, Shows
 
 ## Getting started
 
-You need **Node 26** (the version is pinned in `.nvmrc`):
+You need **Node 24** (the version is pinned in `.nvmrc`):
 
 ```sh
 nvm use          # or: nvm install
@@ -31,6 +31,19 @@ npm run dev      # http://localhost:5173
 - **Social links / contact details:** edit `src/data/socials.ts` and `src/data/contact.ts`.
 - **Colors, fonts, glass effect:** all design tokens live in `src/styles/tokens.css`.
 
+## Docs
+
+- [`AGENTS.md`](AGENTS.md): architecture, conventions and gotchas for anyone (human or AI) working on the code. `CLAUDE.md` just imports it.
+- [`docs/app_requirements.md`](docs/app_requirements.md): what the site must do and look like
+- [`docs/Lessons.md`](docs/Lessons.md): lessons learned, newest first
+- [`docs/Sources.md`](docs/Sources.md): external references, libraries and resolved advisories
+
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs lint, tests, type-check + build and `npm audit` on every push to `main` and every pull request. It also runs weekly to catch new security advisories.
+
 ## Deploying
 
-Run `npm run build` and upload the contents of `build/` to any static host.
+The site deploys on **Vercel**. Build settings are pinned in `vercel.json` (Vite, `npm run build`, output `build/`), and the Node version comes from `package.json` `engines` (`24.x`). Pushes to `main` deploy to production; other branches get preview deploys.
+
+It's a plain static build, so `npm run build` + uploading `build/` works on any static host too.
