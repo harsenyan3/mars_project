@@ -113,4 +113,4 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 
 ## 8. Open items
 
-- Image weight: member photos are 1–4 MB each. The hero photo was replaced on 2026-10-28 with a 1448px live-show shot (~190 KB).
+- Image weight: member photos are 1–4 MB each. The hero photo is a 1448px live-show shot in front of a packed crowd (~250 KB).
