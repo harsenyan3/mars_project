@@ -22,6 +22,14 @@ Each entry follows this format:
 **What happened:** `Section` uses `isolation: isolate` and `overflow: hidden`, which creates a stacking context. A `position: fixed` overlay rendered inside it, like `SuccessFlash`, would sit under the navbar no matter its `z-index`.
 **Rule:** Render full-screen overlays as siblings of `<Section>` (see `Contact.tsx`), not as its children.
 
+### 2026-10-28 — Don't remove existing visuals to satisfy a pattern
+**What happened:** To get the strict photo/plain alternation the redesign asked for, the Shows background photo was dropped. The band liked that photo and asked for it back.
+**Rule:** When a new design rule conflicts with something already on the site (a photo, a section, an effect), keep the existing thing and ask, rather than quietly removing it. Mention the trade-off in the summary.
+
+### 2026-10-28 — Rockybilly's visual middle isn't the line box's middle
+**What happened:** To make the About heading straddle the card edge, the first try pulled it up by half its 1.8em line box (`-0.9em`). The edge ended up cutting the lettering about 70% of the way down, which looked accidental.
+**Rule:** The glyphs ride high in their line box, so measure; don't compute. `margin-top: -0.45em` centres the lettering on an edge. Check with a screenshot at desktop and mobile sizes.
+
 ### 2026-10-28 — Vercel deploys failed after the Node 26 upgrade
 **What happened:** `package.json` had `"engines": { "node": ">=26" }`. Vercel only offers Node 24.x and 22.x, and `engines.node` overrides the dashboard setting. No available version matched, so every deploy failed.
 **Rule:** The Node version is capped by the **host**, not by the newest LTS. Before bumping Node, check [Vercel's supported versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions). Use an exact major in `engines` (`"24.x"`), not an open range, and keep `.nvmrc`, `@types/node` and CI on the same major.

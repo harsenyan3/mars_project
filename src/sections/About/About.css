@@ -1,7 +1,9 @@
 .about-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: center;
+  /* Both columns stretch to the same row height, so the story card and the
+     member grid share top and bottom edges whichever one is taller. */
+  align-items: stretch;
   gap: clamp(1.5rem, 4vw, 3.5rem);
 }
 
@@ -12,15 +14,38 @@
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
 }
 
+.about-story-cell {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Darker glass than the default — this panel sits directly over a busy photo */
 .about-story.glass-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0; /* the heading straddles the top edge instead */
   background: linear-gradient(155deg, rgba(20, 20, 24, 0.62), rgba(8, 8, 10, 0.55));
+}
+
+/* Heading sits half in, half out of the card. Rockybilly's glyphs ride high
+   in their 1.8em line box (see SectionTitle.css), so -0.45em (measured, not
+   half of 1.8) is what puts the lettering's visual middle on the card's top
+   edge. One line only, or the overlap breaks. */
+.about-story .section-title {
+  margin-top: -0.45em;
+  white-space: nowrap;
+}
+
+.about-story-heading {
+  margin-bottom: 0.5rem;
 }
 
 .about-story-body {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  margin: auto 0; /* centers the copy in any extra height the grid adds */
 }
 
 .about-story-body p {
@@ -29,18 +54,24 @@
   color: var(--text);
 }
 
-.about-members-heading {
-  margin-bottom: 1rem;
-}
-
 .member-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Rows share the stretched height, so tiles grow taller when the story is long */
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
-.member-grid-item {
+.member-grid-item,
+.member-grid-anim {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.member-grid-anim,
+.member-grid-anim > .member-tile {
+  flex: 1;
 }
 
 /* Mobile: story on top, members in a horizontal swipe row underneath */
@@ -55,12 +86,6 @@
   .about-story-body p {
     font-size: 0.9rem;
     line-height: 1.55;
-  }
-  .about-story .section-heading {
-    margin-bottom: 0.75rem;
-  }
-  .about-members-heading {
-    margin-bottom: 0.6rem;
   }
   .member-grid {
     display: flex;
