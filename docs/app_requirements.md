@@ -89,7 +89,7 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
 ## 6. Quality requirements
 
 - **Q-1 Platform:**
-  - Node 26 LTS
+  - Node 24 LTS, the newest major Vercel offers (Vercel is the host)
   - every dependency at its latest version, unless a documented compatibility cap applies (TypeScript 6.0.x, see `AGENTS.md`)
 - **Q-2 Security and deprecations:**
   - `npm audit` must report **0 vulnerabilities** at moderate severity or higher
@@ -102,6 +102,7 @@ Its visitors are fans arriving from Instagram, TikTok or Linktree (mostly on pho
   - focus is visible
 - **Q-5 Mobile:** form inputs are at least 16px so iOS doesn't zoom in on focus, and layouts use `svh` units so Safari's toolbar doesn't cause jumps.
 - **Q-6 Tests:** pure logic (date filtering, phone formatting) has unit tests.
+- **Q-7 Deploy:** every push to `main` deploys on Vercel. Local, CI and Vercel use the same Node major (see Q-1).
 
 ## 7. Out of scope (for now)
 

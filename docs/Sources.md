@@ -21,7 +21,8 @@ External material the project relies on or was shaped by. Add an entry when you 
 
 | Package | Docs |
 |---|---|
-| Node.js 26 LTS | [Release schedule](https://nodejs.org/en/about/previous-releases) |
+| Node.js 24 LTS | [Release schedule](https://nodejs.org/en/about/previous-releases) |
+| Vercel | [Supported Node.js versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions), [vercel.json reference](https://vercel.com/docs/project-configuration) |
 | React 19 | [react.dev](https://react.dev/) — [ref as a prop](https://react.dev/blog/2024/12/05/react-19#ref-as-a-prop) (why there's no `forwardRef`) |
 | Vite 8 | [vite.dev](https://vite.dev/) |
 | Vitest 5 | [vitest.dev](https://vitest.dev/) |

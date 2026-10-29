@@ -16,7 +16,11 @@ Check `docs/Lessons.md` before touching anything it mentions (fonts, tests setup
 
 ## Stack
 
-- **Node 26 LTS**, pinned in `.nvmrc` and `package.json` `engines`. Required, not just recommended: `jsdom@30` needs `^22.22 || ^24.15 || >=26`, and `vitest@5` needs `^22.12 || ^24 || >=26`. Node 20 is EOL and won't run the tests. In a non-interactive shell npm may not be on PATH; use `~/.nvm/versions/node/v26.*/bin`.
+- **Node 24 LTS**, pinned in `.nvmrc` (`24`) and `package.json` `engines` (`"24.x"`), with `@types/node` ^24 to match. Local dev, CI and Vercel all run the same major version.
+  - **Why not 26:** Vercel only offers 24.x and 22.x (as of 2026-10). `engines.node` overrides the dashboard setting, so `>=26` made every deploy fail. Move to 26 only once Vercel lists it; see `docs/Lessons.md`.
+  - **Floor:** `jsdom@30` needs `^24.15`, and `vitest@5` needs `^24`. Node 20 is EOL and won't run the tests.
+  - In a non-interactive shell, npm may not be on PATH; use `~/.nvm/versions/node/v24.*/bin`.
+- **Vercel** (hosting): `vercel.json` pins `framework: vite`, `npm ci`, `npm run build` and `outputDirectory: build`. It overrides the dashboard, so the non-default `build/` output folder can't break deploys.
 - Vite 8 (build tool/dev server) + TypeScript. Migrated off Create React App in Aug 2026 because `react-scripts` was pinning ~22 deprecated transitive packages.
 - **TypeScript is pinned to exactly `6.0.3`, on purpose.** TS 7 is out, but `typescript-eslint` 8.x declares `typescript >=4.8.4 <6.1.0`. Don't bump to 7 until typescript-eslint supports it.
 - React 19, function components + hooks only. **No `forwardRef`.** Section components take `ref` as a regular prop (`ref?: Ref<HTMLElement>`), which is React 19's replacement.

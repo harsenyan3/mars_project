@@ -6,7 +6,7 @@ The whole site is one scrolling page with four full-screen sections: Home, Shows
 
 ## Getting started
 
-You need **Node 26** (the version is pinned in `.nvmrc`):
+You need **Node 24** (the version is pinned in `.nvmrc`):
 
 ```sh
 nvm use          # or: nvm install
@@ -44,4 +44,6 @@ GitHub Actions (`.github/workflows/ci.yml`) runs lint, tests, type-check + build
 
 ## Deploying
 
-Run `npm run build` and upload the contents of `build/` to any static host.
+The site deploys on **Vercel**. Build settings are pinned in `vercel.json` (Vite, `npm run build`, output `build/`), and the Node version comes from `package.json` `engines` (`24.x`). Pushes to `main` deploy to production; other branches get preview deploys.
+
+It's a plain static build, so `npm run build` + uploading `build/` works on any static host too.

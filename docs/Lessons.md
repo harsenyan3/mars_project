@@ -22,9 +22,13 @@ Each entry follows this format:
 **What happened:** `Section` uses `isolation: isolate` and `overflow: hidden`, which creates a stacking context. A `position: fixed` overlay rendered inside it, like `SuccessFlash`, would sit under the navbar no matter its `z-index`.
 **Rule:** Render full-screen overlays as siblings of `<Section>` (see `Contact.tsx`), not as its children.
 
+### 2026-10-28 — Vercel deploys failed after the Node 26 upgrade
+**What happened:** `package.json` had `"engines": { "node": ">=26" }`. Vercel only offers Node 24.x and 22.x, and `engines.node` overrides the dashboard setting. No available version matched, so every deploy failed.
+**Rule:** The Node version is capped by the **host**, not by the newest LTS. Before bumping Node, check [Vercel's supported versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions). Use an exact major in `engines` (`"24.x"`), not an open range, and keep `.nvmrc`, `@types/node` and CI on the same major.
+
 ### 2026-10-28 — Node 20 is EOL and the test stack drops it
 **What happened:** `jsdom@30` and `vitest@5` declare engines that exclude Node 20. `npm install` still "works" but tests can break.
-**Rule:** Use the Node in `.nvmrc` (26). In non-interactive shells npm may not be on PATH; use `~/.nvm/versions/node/v26.*/bin`.
+**Rule:** Use the Node in `.nvmrc` (24; see the Vercel entry above for why not 26). In non-interactive shells npm may not be on PATH; use `~/.nvm/versions/node/v24.*/bin`.
 
 ### 2026-10-28 — `npm outdated` can lie (stale cache)
 **What happened:** `npm outdated` reported older "Latest" versions (jsdom 29, vitest 4) than the registry actually had (jsdom 30.1.3, vitest 5.0.5).
