@@ -23,11 +23,8 @@ export function Home({ ref, onSeeShows }: HomeProps) {
     >
       <div className="home-content">
         <img src={logo} alt="Mars Project" className="home-logo" />
-        <p className="home-subtitle">
-          Just some kids making music out of Atlanta, Georgia. Got great things coming! Wanna hear us live?
-        </p>
-        <Button onClick={onSeeShows} className="home-cta">
-          See next dates
+        <Button variant="glass" onClick={onSeeShows} className="home-cta">
+          Next Shows
         </Button>
         <SocialLinks variant="icons" className="home-socials" />
       </div>

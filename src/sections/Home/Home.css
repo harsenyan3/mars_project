@@ -7,33 +7,59 @@
   margin: 0 auto;
 }
 
+/* Photo is taller than the section and shifted up 30%, which lifts the band's
+   faces ~15% of the screen higher at every aspect ratio (object-position alone
+   can't do it on phones, where the photo has no vertical slack). The bottom
+   still lines up with the section, so there's no gap above the fade. */
+.home-section .section-bg-img {
+  position: relative;
+  top: -30%;
+  height: 130%;
+}
+
 .home-logo {
   width: min(460px, 80vw);
   height: auto;
-  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+  /* Space where the tagline used to be, so the button sits just below its old spot */
+  margin-bottom: 10vh;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8));
   animation: fadeInUp 1s var(--ease) both;
 }
 
-.home-subtitle {
-  font-size: clamp(1rem, 1.6vw, 1.3rem);
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text);
-  max-width: 34em;
-  margin-bottom: clamp(1.5rem, 3.5vh, 2.25rem);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-  animation: fadeInUp 1s var(--ease) 0.2s both;
+/* Bigger logo on desktop, capped by screen height so it always fits one screen */
+@media (min-width: 769px) {
+  .home-logo {
+    width: min(620px, 72svh);
+  }
 }
 
-.home-cta {
-  animation: fadeInUp 1s var(--ease) 0.4s both;
+@media (max-width: 768px) {
+  .home-logo {
+    margin-bottom: 16vh;
+  }
+}
+
+.home-cta.btn {
+  font-size: 1rem;
+  padding: 0.7rem 1.8rem;
+  animation: fadeInUp 1s var(--ease) 0.3s both;
 }
 
 .home-socials {
   justify-content: center;
-  margin-top: clamp(1.25rem, 3vh, 2rem);
-  animation: fadeInUp 1s var(--ease) 0.6s both;
+  gap: 0.6rem;
+  margin-top: 1.35rem;
+  animation: fadeInUp 1s var(--ease) 0.5s both;
+}
+
+.home-socials .social-link {
+  width: 36px;
+  height: 36px;
+}
+
+.home-socials .social-link-icon {
+  width: 16px;
+  height: 16px;
 }
 
 @keyframes fadeInUp {
@@ -49,7 +75,7 @@
 
 .scroll-indicator {
   position: absolute;
-  bottom: 1.75rem;
+  bottom: 0.75rem;
   left: 50%;
   transform: translateX(-50%);
   background: none;
@@ -61,8 +87,8 @@
 
 .scroll-arrow {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-right: 2px solid rgba(255, 255, 255, 0.7);
   border-bottom: 2px solid rgba(255, 255, 255, 0.7);
   transform: rotate(45deg);
@@ -80,7 +106,8 @@
   }
 }
 
-@media (max-height: 640px) {
+/* Short screens: the socials sit too close to it, and "Next Shows" does the same job */
+@media (max-height: 760px) {
   .scroll-indicator {
     display: none;
   }

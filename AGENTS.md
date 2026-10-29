@@ -84,7 +84,8 @@ src/
       Section                full-screen <section> shell: ref, id, variant 'image' | 'plain', backgroundImage
       SectionTitle           Rockybilly heading (h2, or h3 via `as`), optional subtitle, align center|left
       GlassPanel             frosted translucent container (+ .glass-title label style)
-      Button / ButtonLink    glass pill, variants primary | outline, sizes md | sm
+      Button / ButtonLink    glass pill, variants primary | outline | glass (liquid-glass, used by Home's
+                              "Next Shows"), sizes md | sm
     common/
       AnimatedSection.tsx    scroll-reveal wrapper. Tracks global scroll direction via a module-level variable
                               + `window` scroll listener registered at import time (not inside a hook). That's
@@ -99,9 +100,11 @@ src/
       Footer.tsx/.css        slim strip after Contact (not a full screen)
 
   sections/                  the four scroll sections (not routed pages)
-    Home/                    Home (hero photo, logo, CTA, socials)
+    Home/                    Home (hero photo, big logo, "Next Shows" glass CTA, socials; no tagline). The hero
+                              photo is 130% tall and shifted up 30% so the faces sit ~39% down the screen.
     Shows/                   Shows, ConcertRow (date · city/venue · tickets), ShowsEmptyState
-    About/                   About (story panel + member grid), MemberTile
+    About/                   About (story panel + members), MemberCarousel (3×2 grid on desktop; centered carousel
+                              with arrows on mobile, selected = tile nearest the scroll center), MemberTile
     Contact/                 Contact, ContactMethods, ContactForm. Contact calls useContactForm() and renders
                               SuccessFlash *outside* its Section, so the fixed overlay isn't trapped in the
                               section's stacking context.
@@ -149,11 +152,11 @@ public/                      served verbatim at the site root: favicon.png, appl
   - Body: **Space Grotesk** (`--font-body`). Oswald is gone.
   - Labels, buttons, dates and cities: Bebas Neue (`--font-label`).
 - **Brand colors:** red `#ef4444` (`--red`), with `#dc2626`/`#991b1b` for darker states, on near-black `--bg` `#050506`.
-- Mobile breakpoint is 768px (nav collapses to hamburger; About members become a horizontal swipe row; Contact methods collapse to an icon row). A secondary breakpoint at 480px tightens the gutter.
+- Mobile breakpoint is 768px (nav collapses to hamburger; About heading centers and members become a centered carousel with arrows; Contact methods collapse to an icon row). A secondary breakpoint at 480px tightens the gutter.
 
 ## Known follow-ups / things to be aware of
 
 - **Security (handled 2026-08-27, verify it stayed fixed):** `src/token.txt` used to contain what looked like a live GitHub personal access token, committed to git history. It's been deleted and `.gitignore`d. The token itself still needs revoking on GitHub (Settings → Developer settings → tokens) if that hasn't happened; deleting the file doesn't remove it from past commits.
-- **Image weight:** the member photos are 0.6–4 MB each (`mombay.jpeg` 3.9 MB, `jack.jpeg` 3.4 MB…), and `band-members.jpg` is 1.8 MB. Resizing them to ~800px wide WebP/JPEG would cut page weight by roughly 15 MB. `home-hero.jpg` (live show crowd photo, 1448×1086, ~190 KB, focal point `center 45%`) is already optimized; resize new photos the same way before committing.
+- **Image weight:** the member photos are 0.6–4 MB each (`mombay.jpeg` 3.9 MB, `jack.jpeg` 3.4 MB…), and `band-members.jpg` is 1.8 MB. Resizing them to ~800px wide WebP/JPEG would cut page weight by roughly 15 MB. `home-hero.jpg` (live show crowd photo, 1448×1086, ~190 KB, `center 45%` + the 130%/-30% shift in Home.css) is already optimized; resize new photos the same way before committing.
 - Tests: an App smoke test (renders, checks the home subtitle) plus unit tests for `formatPhone` and `concertDates`. There's no coverage of the contact form flow, scroll spy or section rendering yet.
 - No router: adding a second real page (press kit, blog) means pulling in `react-router` rather than extending the section pattern.
